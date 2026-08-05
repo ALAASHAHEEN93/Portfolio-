@@ -1,0 +1,132 @@
+.about {
+  padding-top: 0;
+}
+
+.about__shell {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.about__card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 48px;
+  align-items: center;
+  padding: 48px;
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.about__visual {
+  width: 180px;
+  height: 180px;
+  flex-shrink: 0;
+}
+
+.about__avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 3px solid rgba(255, 255, 255, 0.8);
+}
+
+.about__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+}
+
+.about__text .badge {
+  margin-bottom: 14px;
+}
+
+.about__bio {
+  margin-top: 12px;
+  margin-bottom: 28px;
+  max-width: 520px;
+}
+
+.about__stats {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.about__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.about__stat .section-label {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.about__stat-value {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.about__tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.about__skills {
+  padding: 22px 28px;
+  border-radius: var(--radius-xl);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.about__skills .section-label {
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.about__skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+@media (max-width: 768px) {
+  .about__card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 32px 24px;
+    gap: 28px;
+  }
+
+  .about__visual {
+    margin: 0 auto;
+    width: 140px;
+    height: 140px;
+  }
+
+  .about__stats {
+    justify-content: center;
+  }
+
+  .about__tags {
+    justify-content: center;
+  }
+
+  .about__skills {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+}
