@@ -181,6 +181,10 @@ export default function ProjectPage() {
             <p>{project.role}</p>
           </div>
           <div className="case__meta-item">
+            <span className="section-label">What I owned</span>
+            <p>{project.owned}</p>
+          </div>
+          <div className="case__meta-item">
             <span className="section-label">Tools</span>
             <div className="case__chips">
               {project.tools.map((tool) => (

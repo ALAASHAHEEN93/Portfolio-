@@ -1,10 +1,10 @@
 export const personalInfo = {
   name: "Alaa Shaheen",
   title: "UI/UX Designer",
-  email: "desinger.alaa1@gmail.com",
+  email: "designer.alaa1@gmail.com",
   location: "Cologne, Germany",
   about:
-    "I turn complex ideas into simple, beautiful interfaces, blending design thinking with front-end craft.",
+    "I design clear product experiences and build the interfaces that bring them to life, from research and flows to polished UI.",
   resumeUrl: "/CV.pdf",
   socials: {
     behance: "https://www.behance.net/alaashaheen16",
@@ -121,6 +121,7 @@ export type Project = {
   problem: string;
   solution: string;
   outcome: string;
+  owned: string;
   typography: string;
   highlights?: string[];
   image?: string;
@@ -145,6 +146,7 @@ export const projects: Project[] = [
     solution:
       "Designed a dark, elegant web experience with product discovery, flavor customization tools, membership signup, and clear storytelling around sourcing and roasting.",
     outcome: "A premium storefront concept with clear product discovery and brand storytelling.",
+    owned: "End-to-end UI design and front-end build for the brand site.",
     typography: "Serif display + clean sans-serif",
     highlights: [
       "Premium product catalog and Classified Vault collection",
@@ -170,6 +172,7 @@ export const projects: Project[] = [
     solution:
       "Collaborated on a full rebrand with modern UI layouts, responsive components, wireframes, prototypes, and a React front-end that improved usability, accessibility, and visual consistency.",
     outcome: "Live rebranded website with clearer structure and stronger brand presence.",
+    owned: "UI layouts, responsive components, and React front-end implementation.",
     typography: "Custom brand typography",
     highlights: [
       "Rebranding for improved visual identity and UX",
@@ -193,6 +196,7 @@ export const projects: Project[] = [
     solution:
       "Designed a clean mobile app store experience with refined product galleries, intuitive categories, and a simple path from discovery to purchase that feels elegant and easy to use.",
     outcome: "End-to-end mobile commerce flows from browse to checkout.",
+    owned: "UX research, flows, and full mobile UI design.",
     typography: "Modern sans-serif",
     highlights: [
       "Welcome screens and onboarding",
@@ -216,6 +220,7 @@ export const projects: Project[] = [
     solution:
       "Integrated AI-based image recognition with a personalized nutrition system. Users upload meal photos, get automatic calorie and macro estimates, and receive customized meal plans and recipes based on their goals.",
     outcome: "Faster meal logging with AI photo analysis and personal plans.",
+    owned: "UX research, information architecture, and UI design system.",
     typography: "Montserrat",
     highlights: [
       "AI meal photo analysis for calories and macros",
@@ -239,6 +244,7 @@ export const projects: Project[] = [
     solution:
       "Built a mindful storytelling app with interactive audio-visual stories, diverse collections, bedtime mode with soft animations, a parent dashboard, and offline access for families on the go.",
     outcome: "Gentle story experience with bedtime mode and parent controls.",
+    owned: "UX research, storytelling flows, and calm kids-focused UI.",
     typography: "Baloo",
     highlights: [
       "Interactive audio-visual stories with soothing narration",
@@ -262,6 +268,7 @@ export const projects: Project[] = [
     solution:
       "Created a mobile app where users browse modern furniture, filter by preferences, compare products, and visualize items in their homes using augmented reality for more confident buying decisions.",
     outcome: "Confident furniture decisions with compare and AR preview.",
+    owned: "UX research, product flows, and AR shopping UI design.",
     typography: "Poppins",
     highlights: [
       "Wide furniture catalog with smart filtering",
@@ -285,6 +292,7 @@ export const projects: Project[] = [
     solution:
       "Built an integrated experience with a reliable plant store and smart care assistant. Users photograph plants to detect pests or diseases and receive personalized care tips while shopping confidently.",
     outcome: "One app for plant shopping and AI-guided care.",
+    owned: "UX research, design system, and AI care + shop UI.",
     typography: "Lunasima",
     highlights: [
       "AI image recognition for plant health diagnosis",
@@ -297,6 +305,7 @@ export const projects: Project[] = [
 const galleryManifest: Record<string, string[]> = {
   "coffee-lab": [
     "/projects/coffee-lab/01.jpg",
+    "/projects/coffee-lab/02.jpg",
   ],
   fermentfreude: [
     "/projects/fermentfreude/cover.png",

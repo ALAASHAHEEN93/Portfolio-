@@ -22,9 +22,9 @@ export default function About() {
               <em>building with purpose</em>
             </h2>
             <p className="section-sub about__bio">
-              With hands-on experience in web, mobile, and SaaS projects, I combine
-              creativity and technical precision to transform complex ideas into
-              simple, accessible interfaces.
+              Based in Cologne, I work across web and mobile products. I care about
+              calm interfaces, clear flows, and the details that make a product feel
+              simple to use.
             </p>
 
             <div className="about__stats">

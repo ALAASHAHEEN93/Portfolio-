@@ -241,7 +241,7 @@
 /* Meta strip */
 .case__meta {
   display: grid;
-  grid-template-columns: 1.2fr 1.4fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 28px;
   padding: 28px;
   margin-bottom: 56px;
