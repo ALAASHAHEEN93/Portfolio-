@@ -107,11 +107,6 @@ export const projectsDe: Record<string, ProjectCopy> = {
     outcome: "Premium-Storefront-Konzept mit klarer Produktdiscovery und Markenstory.",
     owned: "UI-Design und Front-end-Umsetzung der Markenwebsite von Anfang bis Ende.",
     typography: "Serif Display + klare Sans-Serif",
-    approach: [
-      { label: "Marken-Audit", detail: "Ton, Produktstory und Shop-Reibung erfasst" },
-      { label: "Visuelles System", detail: "Dunkles Premium-UI, Katalog und Blend-Tools" },
-      { label: "Front-end Build", detail: "Responsive React-Seiten mit feiner Motion" },
-    ],
     highlights: [
       "Premium-Produktkatalog und Classified Vault Collection",
       "Interaktive Geschmacks- und Blend-Tools",
@@ -129,11 +124,6 @@ export const projectsDe: Record<string, ProjectCopy> = {
     outcome: "Live-Website mit klarerer Struktur und stärkerer Markenpräsenz.",
     owned: "UI-Layouts, responsive Komponenten und React-Front-end-Umsetzung.",
     typography: "Eigene Markentypografie",
-    approach: [
-      { label: "Rebrand", detail: "Identität, Ton und klarere Informationsstruktur" },
-      { label: "UI-System", detail: "Responsive Layouts und wiederverwendbare Figma-Komponenten" },
-      { label: "Ship in React", detail: "Zugängliches Front-end für die Live-Website" },
-    ],
     highlights: [
       "Rebranding für bessere visuelle Identität und UX",
       "Responsive UI-Komponenten in Figma",
@@ -151,11 +141,6 @@ export const projectsDe: Record<string, ProjectCopy> = {
     outcome: "Sicherere Kaufentscheidungen durch Vergleich und AR-Preview.",
     owned: "UX Research, Produktflows und AR-Shopping-UI.",
     typography: "Poppins",
-    approach: [
-      { label: "Research", detail: "Interviews und Reibung beim Möbelkauf" },
-      { label: "Flows", detail: "Browse-, Vergleich- und AR-Preview-Pfade" },
-      { label: "UI Craft", detail: "Ruhige Produktscreens mit räumlichen Preview-Hinweisen" },
-    ],
     highlights: [
       "Breiter Möbelkatalog mit smartem Filtering",
       "Produktvergleich und detaillierte Previews",
@@ -173,11 +158,6 @@ export const projectsDe: Record<string, ProjectCopy> = {
     outcome: "End-to-end Mobile-Commerce-Flows von Browse bis Checkout.",
     owned: "UX Research, Flows und vollständiges Mobile-UI-Design.",
     typography: "Moderne Sans-Serif",
-    approach: [
-      { label: "Discover", detail: "Pain Points im Modest-Fashion-Shopping erfasst" },
-      { label: "Struktur", detail: "Kategorien, PDP und ruhiger Checkout" },
-      { label: "Visual Polish", detail: "Elegante Galerien und sanfte Produktpräsentation" },
-    ],
     highlights: [
       "Welcome-Screens und Onboarding",
       "Home-, Kategorie- und Produktdetailseiten",
@@ -195,11 +175,6 @@ export const projectsDe: Record<string, ProjectCopy> = {
     outcome: "Schnelleres Meal-Logging mit KI-Fotoanalyse und persönlichen Plänen.",
     owned: "UX Research, Informationsarchitektur und UI Design System.",
     typography: "Montserrat",
-    approach: [
-      { label: "Research", detail: "Logging-Reibung und Ernährungsziele untersucht" },
-      { label: "IA + System", detail: "Foto, Makros, Pläne und Reminder" },
-      { label: "UI Kit", detail: "Klare Mobile-Patterns für den Alltag" },
-    ],
     highlights: [
       "KI-Essensfotoanalyse für Kalorien und Makros",
       "Personalisierte Meal Plans und Rezepte",
@@ -217,11 +192,6 @@ export const projectsDe: Record<string, ProjectCopy> = {
     outcome: "Sanftes Story-Erlebnis mit Bedtime-Modus und Elternkontrolle.",
     owned: "UX Research, Storytelling-Flows und ruhiges Kids-UI.",
     typography: "Baloo",
-    approach: [
-      { label: "Familien-Research", detail: "Elternbedarf und ruhige Bedtime-Rahmenbedingungen" },
-      { label: "Story Flows", detail: "Hören, Sammeln und Bedtime-Modus" },
-      { label: "Soft UI", detail: "Kinderfreundlich ohne Überreizung" },
-    ],
     highlights: [
       "Interaktive Audio-Visual Stories mit ruhiger Narration",
       "Bedtime-Modus mit sanften Animationen und Sounds",
@@ -239,11 +209,6 @@ export const projectsDe: Record<string, ProjectCopy> = {
     outcome: "Eine App für Pflanzenkauf und KI-gestützte Pflege.",
     owned: "UX Research, Design System und AI Care + Shop UI.",
     typography: "Lunasima",
-    approach: [
-      { label: "Problem Framing", detail: "Shop-vs-Care-Lücke für Pflanzenbesitzer" },
-      { label: "Design System", detail: "Gemeinsames UI für Store und Diagnose" },
-      { label: "AI Care UI", detail: "Foto-Check, Tipps und sicheres Shoppen" },
-    ],
     highlights: [
       "KI-Bilderkennung für Pflanzengesundheit",
       "Personalisierte Pflegehinweise",

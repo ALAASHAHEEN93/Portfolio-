@@ -28,18 +28,18 @@ export default function ProjectPage() {
       : lang === "de"
         ? "Portfolio von Alaa Shaheen"
         : "Alaa Shaheen portfolio",
-    image: project?.image || project?.logo || "/og.png",
+    image: project?.logo || "/og.png",
     path: project ? `/project/${project.slug}` : "/",
   });
 
-  const processSteps = useMemo(() => {
-    if (project?.approach?.length) return project.approach;
-    return [
+  const processSteps = useMemo(
+    () => [
       { label: t("discover"), detail: t("discoverDetail") },
       { label: t("design"), detail: t("designDetail") },
       { label: t("build"), detail: t("buildDetail") },
-    ];
-  }, [project, t]);
+    ],
+    [t],
+  );
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -78,8 +78,7 @@ export default function ProjectPage() {
   const prevProject =
     projectList[(currentIndex - 1 + projectList.length) % projectList.length];
   const behanceUrl = getBehanceProjectUrl(project);
-  const coverImage = project.image;
-  const gallery = getProjectGallery(project).filter((src) => src !== coverImage);
+  const gallery = getProjectGallery(project);
 
   return (
     <>
@@ -174,36 +173,12 @@ export default function ProjectPage() {
                     </svg>
                   </a>
                 )}
-                {project.figmaUrl && (
-                  <a
-                    href={project.figmaUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={behanceUrl ? "btn" : "btn btn--primary"}
-                  >
-                    {t("openFigma")}
-                  </a>
-                )}
-                {project.prototypeUrl && (
-                  <a
-                    href={project.prototypeUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={behanceUrl || project.figmaUrl ? "btn" : "btn btn--primary"}
-                  >
-                    {t("openPrototype")}
-                  </a>
-                )}
                 {project.externalUrl && (
                   <a
                     href={project.externalUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={
-                      behanceUrl || project.figmaUrl || project.prototypeUrl
-                        ? "btn"
-                        : "btn btn--primary"
-                    }
+                    className={behanceUrl ? "btn" : "btn btn--primary"}
                   >
                     {t("visitLive")}
                   </a>
@@ -212,18 +187,6 @@ export default function ProjectPage() {
             </div>
           </div>
         </section>
-
-        {coverImage && (
-          <div className="case__cover section__inner">
-            <button
-              type="button"
-              className="case__cover-frame"
-              onClick={() => setLightbox(coverImage)}
-            >
-              <img src={coverImage} alt={`${project.title} preview`} />
-            </button>
-          </div>
-        )}
 
         <section className="case__meta section__inner">
           <div className="case__meta-item">
@@ -245,10 +208,6 @@ export default function ProjectPage() {
           <div className="case__meta-item">
             <span className="section-label">{t("outcome")}</span>
             <p>{project.outcome}</p>
-          </div>
-          <div className="case__meta-item">
-            <span className="section-label">{t("typography")}</span>
-            <p>{project.typography}</p>
           </div>
         </section>
 

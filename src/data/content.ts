@@ -146,7 +146,6 @@ export const projects: Project[] = [
     color: "#C49A6C",
     featured: true,
     logo: "/projects/coffee-lab/logo.svg",
-    image: "/projects/coffee-lab/01.jpg",
     description: "Luxury coffee brand site for roasting, blends, and shopping.",
     role: "UI/UX Designer, Front-End Developer",
     tools: ["Figma", "React", "HTML", "CSS", "JavaScript"],
@@ -157,11 +156,6 @@ export const projects: Project[] = [
     outcome: "A premium storefront concept with clear product discovery and brand storytelling.",
     owned: "End-to-end UI design and front-end build for the brand site.",
     typography: "Serif display + clean sans-serif",
-    approach: [
-      { label: "Brand audit", detail: "Mapped tone, product story, and shop friction" },
-      { label: "Visual system", detail: "Dark premium UI, catalog, and blend tools" },
-      { label: "Front-end build", detail: "Responsive React pages with polished motion" },
-    ],
     highlights: [
       "Premium product catalog and Classified Vault collection",
       "Interactive flavor customization and blending tools",
@@ -178,7 +172,6 @@ export const projects: Project[] = [
     externalUrl: "https://www.fermentfreude.at/",
     behanceUrl: "https://www.behance.net/gallery/246062163/fermentfreude",
     logo: "/projects/fermentfreude/logo.png",
-    image: "/projects/fermentfreude/cover.png",
     description: "Rebrand and React website for a fermentation brand.",
     role: "Volunteer UX/UI Designer & Front-End Developer",
     tools: ["Figma", "React", "HTML", "CSS", "JavaScript"],
@@ -189,11 +182,6 @@ export const projects: Project[] = [
     outcome: "Live rebranded website with clearer structure and stronger brand presence.",
     owned: "UI layouts, responsive components, and React front-end implementation.",
     typography: "Custom brand typography",
-    approach: [
-      { label: "Rebrand", detail: "Identity, tone, and clearer information structure" },
-      { label: "UI system", detail: "Responsive layouts and reusable Figma components" },
-      { label: "Ship in React", detail: "Accessible front-end for the live brand site" },
-    ],
     highlights: [
       "Rebranding for improved visual identity and UX",
       "Responsive UI components built in Figma",
@@ -208,7 +196,6 @@ export const projects: Project[] = [
     color: "#E6E0D6",
     behanceUrl: "https://www.behance.net/gallery/230204025/Furniture-app",
     logo: "/projects/case-vue/logo.png",
-    image: "/projects/case-vue/02.png",
     description: "Furniture shopping app with browsing and AR previews.",
     role: "UX/UI Designer, UX Researcher",
     tools: ["Figma", "FigJam", "Google Forms", "Pencil & Paper"],
@@ -219,11 +206,6 @@ export const projects: Project[] = [
     outcome: "Confident furniture decisions with compare and AR preview.",
     owned: "UX research, product flows, and AR shopping UI design.",
     typography: "Poppins",
-    approach: [
-      { label: "Research", detail: "Shopper interviews and furniture-buying friction" },
-      { label: "Flows", detail: "Browse, compare, and AR preview paths" },
-      { label: "UI craft", detail: "Calm product screens with spatial preview cues" },
-    ],
     highlights: [
       "Wide furniture catalog with smart filtering",
       "Product comparison and detailed previews",
@@ -238,7 +220,6 @@ export const projects: Project[] = [
     color: "#D4C4B0",
     behanceUrl: "https://www.behance.net/gallery/239610529/Abaya-App-Store",
     logo: "/projects/abaya/logo.png",
-    image: "/projects/abaya/cover.png",
     description: "Calm mobile shopping app for abaya and modest fashion.",
     role: "UX/UI Designer, UX Researcher",
     tools: ["Figma", "FigJam", "Pencil & Paper"],
@@ -249,11 +230,6 @@ export const projects: Project[] = [
     outcome: "End-to-end mobile commerce flows from browse to checkout.",
     owned: "UX research, flows, and full mobile UI design.",
     typography: "Modern sans-serif",
-    approach: [
-      { label: "Discover", detail: "Mapped modest-fashion shopping pain points" },
-      { label: "Structure", detail: "Categories, PDP, and calm checkout flow" },
-      { label: "Visual polish", detail: "Elegant galleries and soft product presentation" },
-    ],
     highlights: [
       "Welcome screens and onboarding",
       "Home, category, and product detail pages",
@@ -268,7 +244,6 @@ export const projects: Project[] = [
     color: "#C4B5E8",
     behanceUrl: "https://www.behance.net/gallery/238047517/Call-Track",
     logo: "/projects/calltrack/logo.png",
-    image: "/projects/calltrack/cover.png",
     description: "AI calorie app that reads nutrition from meal photos.",
     role: "UX/UI Designer, UX Researcher",
     tools: ["Figma", "FigJam", "Google Forms", "Pencil & Paper"],
@@ -279,11 +254,6 @@ export const projects: Project[] = [
     outcome: "Faster meal logging with AI photo analysis and personal plans.",
     owned: "UX research, information architecture, and UI design system.",
     typography: "Montserrat",
-    approach: [
-      { label: "Research", detail: "Surveyed logging friction and nutrition goals" },
-      { label: "IA + system", detail: "Photo capture, macros, plans, and reminders" },
-      { label: "UI kit", detail: "Clear mobile patterns for fast daily use" },
-    ],
     highlights: [
       "AI meal photo analysis for calories and macros",
       "Personalized meal plans and healthy recipes",
@@ -297,7 +267,6 @@ export const projects: Project[] = [
     tags: ["Mobile App", "Kids", "Storytelling"],
     color: "#E8C4D4",
     logo: "/projects/littlechapter/logo.png",
-    image: "/projects/littlechapter/cover.png",
     behanceUrl: "https://www.behance.net/gallery/235882915/App-Story-For-Kids",
     description: "Calm storytelling app for parents and kids together.",
     role: "UX/UI Designer, UX Researcher",
@@ -309,11 +278,6 @@ export const projects: Project[] = [
     outcome: "Gentle story experience with bedtime mode and parent controls.",
     owned: "UX research, storytelling flows, and calm kids-focused UI.",
     typography: "Baloo",
-    approach: [
-      { label: "Family research", detail: "Parent needs and calm bedtime constraints" },
-      { label: "Story flows", detail: "Listen, collect, and bedtime-mode journeys" },
-      { label: "Soft UI", detail: "Kid-friendly visuals without overstimulation" },
-    ],
     highlights: [
       "Interactive audio-visual stories with soothing narration",
       "Bedtime mode with calming animations and sounds",
@@ -328,7 +292,6 @@ export const projects: Project[] = [
     color: "#C8E8B5",
     behanceUrl: "https://www.behance.net/gallery/230573965/Plant-Shop-and-Care",
     logo: "/projects/grove/logo.png",
-    image: "/projects/grove/01.png",
     description: "Plant shop and care app with AI plant health checks.",
     role: "UX/UI Designer, UX Researcher",
     tools: ["Figma", "FigJam", "Google Forms", "Pencil & Paper"],
@@ -339,11 +302,6 @@ export const projects: Project[] = [
     outcome: "One app for plant shopping and AI-guided care.",
     owned: "UX research, design system, and AI care + shop UI.",
     typography: "Lunasima",
-    approach: [
-      { label: "Problem framing", detail: "Shop vs care gap for plant owners" },
-      { label: "Design system", detail: "Shared UI for store and diagnosis flows" },
-      { label: "AI care UI", detail: "Photo check, tips, and confident shopping" },
-    ],
     highlights: [
       "AI image recognition for plant health diagnosis",
       "Personalized care guidance and tips",
@@ -356,9 +314,6 @@ const galleryManifest: Record<string, string[]> = {
   "coffee-lab": [
     "/projects/coffee-lab/01.jpg",
     "/projects/coffee-lab/02.jpg",
-    "/projects/coffee-lab/03.jpg",
-    "/projects/coffee-lab/04.jpg",
-    "/projects/coffee-lab/05.jpg",
   ],
   fermentfreude: [
     "/projects/fermentfreude/cover.png",
@@ -399,11 +354,6 @@ const galleryManifest: Record<string, string[]> = {
   "case-vue": [
     "/projects/case-vue/02.png",
     "/projects/case-vue/01.png",
-    "/projects/case-vue/03.png",
-    "/projects/case-vue/04.png",
-    "/projects/case-vue/05.png",
-    "/projects/case-vue/06.png",
-    "/projects/case-vue/splash.png",
   ],
   grove: [
     "/projects/grove/01.png",
