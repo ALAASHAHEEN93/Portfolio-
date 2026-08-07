@@ -84,6 +84,7 @@ export type LanguageItem = {
 };
 
 export const languages: LanguageItem[] = [
+  { name: "Arabic", level: "Native" },
   { name: "English", level: "Fluent" },
   { name: "German", level: "Intermediate" },
 ];
@@ -119,6 +120,7 @@ export type Project = {
   tools: string[];
   problem: string;
   solution: string;
+  outcome: string;
   typography: string;
   highlights?: string[];
   image?: string;
@@ -134,15 +136,15 @@ export const projects: Project[] = [
     tags: ["Web Design", "E-commerce", "Branding"],
     color: "#C49A6C",
     featured: true,
-    logo: "/projects/coffee-lab/logo.png",
-    description:
-      "A luxury coffee brand site for precision roasting, custom blends, and refined shopping.",
+    logo: "/projects/coffee-lab/logo.svg",
+    description: "Luxury coffee brand site for roasting, blends, and shopping.",
     role: "UI/UX Designer, Front-End Developer",
     tools: ["Figma", "React", "HTML", "CSS", "JavaScript"],
     problem:
       "Specialty coffee brands often struggle to communicate craft and quality online, with cluttered storefronts that feel generic rather than premium.",
     solution:
       "Designed a dark, elegant web experience with product discovery, flavor customization tools, membership signup, and clear storytelling around sourcing and roasting.",
+    outcome: "A premium storefront concept with clear product discovery and brand storytelling.",
     typography: "Serif display + clean sans-serif",
     highlights: [
       "Premium product catalog and Classified Vault collection",
@@ -159,15 +161,15 @@ export const projects: Project[] = [
     featured: true,
     externalUrl: "https://www.fermentfreude.at/",
     behanceUrl: "https://www.behance.net/gallery/246062163/fermentfreude",
-    logo: "/projects/fermentfreude/logo.png",
-    description:
-      "A rebrand and React website for a fermentation brand in Graz.",
+    logo: "/projects/fermentfreude/logo.svg",
+    description: "Rebrand and React website for a fermentation brand.",
     role: "Volunteer UX/UI Designer & Front-End Developer",
     tools: ["Figma", "React", "HTML", "CSS", "JavaScript"],
     problem:
       "The brand needed a stronger visual identity and a more intuitive website to communicate workshops, products, and their fermentation expertise.",
     solution:
       "Collaborated on a full rebrand with modern UI layouts, responsive components, wireframes, prototypes, and a React front-end that improved usability, accessibility, and visual consistency.",
+    outcome: "Live rebranded website with clearer structure and stronger brand presence.",
     typography: "Custom brand typography",
     highlights: [
       "Rebranding for improved visual identity and UX",
@@ -182,15 +184,15 @@ export const projects: Project[] = [
     tags: ["Mobile App", "E-commerce", "UI/UX"],
     color: "#D4C4B0",
     behanceUrl: "https://www.behance.net/gallery/239610529/Abaya-App-Store",
-    logo: "/projects/abaya/logo.png",
-    description:
-      "A mobile shopping app for abaya and modest fashion with calm discovery and checkout.",
+    logo: "/projects/abaya/logo.svg",
+    description: "Calm mobile shopping app for abaya and modest fashion.",
     role: "UX/UI Designer, UX Researcher",
     tools: ["Figma", "FigJam", "Pencil & Paper"],
     problem:
       "Modest fashion shoppers often face cluttered online stores with weak filtering, poor product presentation, and confusing purchase flows that make browsing feel overwhelming.",
     solution:
       "Designed a clean mobile app store experience with refined product galleries, intuitive categories, and a simple path from discovery to purchase that feels elegant and easy to use.",
+    outcome: "End-to-end mobile commerce flows from browse to checkout.",
     typography: "Modern sans-serif",
     highlights: [
       "Welcome screens and onboarding",
@@ -205,15 +207,15 @@ export const projects: Project[] = [
     tags: ["Mobile App", "AI", "UI/UX"],
     color: "#C4B5E8",
     behanceUrl: "https://www.behance.net/gallery/238047517/Call-Track",
-    logo: "/projects/calltrack/logo.png",
-    description:
-      "A smart calorie and diet app that tracks nutrition from AI meal photo analysis.",
+    logo: "/projects/calltrack/logo.svg",
+    description: "AI calorie app that reads nutrition from meal photos.",
     role: "UX/UI Designer, UX Researcher",
     tools: ["Figma", "FigJam", "Google Forms", "Pencil & Paper"],
     problem:
       "Many people struggle to maintain a balanced diet and accurately track daily calorie and nutrient intake. Existing apps require manual input, making the process time-consuming and hard to sustain.",
     solution:
       "Integrated AI-based image recognition with a personalized nutrition system. Users upload meal photos, get automatic calorie and macro estimates, and receive customized meal plans and recipes based on their goals.",
+    outcome: "Faster meal logging with AI photo analysis and personal plans.",
     typography: "Montserrat",
     highlights: [
       "AI meal photo analysis for calories and macros",
@@ -227,16 +229,16 @@ export const projects: Project[] = [
     year: "2025",
     tags: ["Mobile App", "Kids", "Storytelling"],
     color: "#E8C4D4",
-    logo: "/projects/littlechapter/logo.png",
+    logo: "/projects/littlechapter/logo.svg",
     behanceUrl: "https://www.behance.net/gallery/235882915/App-Story-For-Kids",
-    description:
-      "A calm storytelling app where parents and kids read or listen together.",
+    description: "Calm storytelling app for parents and kids together.",
     role: "UX/UI Designer, UX Researcher",
     tools: ["Figma", "FigJam", "Google Forms", "Pencil & Paper"],
     problem:
       "Parents struggle to make storytime consistent due to busy schedules, limited access to age-appropriate stories, and overstimulating apps not designed with kids' needs in mind.",
     solution:
       "Built a mindful storytelling app with interactive audio-visual stories, diverse collections, bedtime mode with soft animations, a parent dashboard, and offline access for families on the go.",
+    outcome: "Gentle story experience with bedtime mode and parent controls.",
     typography: "Baloo",
     highlights: [
       "Interactive audio-visual stories with soothing narration",
@@ -251,15 +253,15 @@ export const projects: Project[] = [
     tags: ["Mobile App", "E-commerce", "AR"],
     color: "#B5C8E8",
     behanceUrl: "https://www.behance.net/gallery/230204025/Furniture-app",
-    logo: "/projects/case-vue/logo.png",
-    description:
-      "A premium furniture shopping app with seamless browsing and AR previews.",
+    logo: "/projects/case-vue/logo.svg",
+    description: "Furniture shopping app with browsing and AR previews.",
     role: "UX/UI Designer, UX Researcher",
     tools: ["Figma", "FigJam", "Google Forms", "Pencil & Paper"],
     problem:
       "Customers find it difficult to choose furniture that fits their style and space. Online stores often have poor navigation, limited visualization, and friction when comparing products.",
     solution:
       "Created a mobile app where users browse modern furniture, filter by preferences, compare products, and visualize items in their homes using augmented reality for more confident buying decisions.",
+    outcome: "Confident furniture decisions with compare and AR preview.",
     typography: "Poppins",
     highlights: [
       "Wide furniture catalog with smart filtering",
@@ -274,15 +276,15 @@ export const projects: Project[] = [
     tags: ["Mobile App", "AI", "Design System"],
     color: "#C8E8B5",
     behanceUrl: "https://www.behance.net/gallery/230573965/Plant-Shop-and-Care",
-    logo: "/projects/grove/logo.png",
-    description:
-      "An all-in-one plant shop and care app with AI image recognition.",
+    logo: "/projects/grove/logo.svg",
+    description: "Plant shop and care app with AI plant health checks.",
     role: "UX/UI Designer, UX Researcher",
     tools: ["Figma", "FigJam", "Google Forms", "Pencil & Paper"],
     problem:
       "Plant owners struggle with proper care, late issue detection, and poor-quality online purchases. Most apps focus on shopping or care, but not both.",
     solution:
       "Built an integrated experience with a reliable plant store and smart care assistant. Users photograph plants to detect pests or diseases and receive personalized care tips while shopping confidently.",
+    outcome: "One app for plant shopping and AI-guided care.",
     typography: "Lunasima",
     highlights: [
       "AI image recognition for plant health diagnosis",
@@ -296,7 +298,11 @@ const galleryManifest: Record<string, string[]> = {
   "coffee-lab": [
     "/projects/coffee-lab/01.jpg",
   ],
-  fermentfreude: [],
+  fermentfreude: [
+    "/projects/fermentfreude/cover.png",
+    "/projects/fermentfreude/web-home.png",
+    "/projects/fermentfreude/web-shop.png",
+  ],
   abaya: [
     "/projects/abaya/01.jpg",
     "/projects/abaya/02.jpg",
@@ -368,6 +374,17 @@ export function getProjectGallery(project: Project): string[] {
   if (fromManifest?.length) return fromManifest;
   if (project.image) return [project.image];
   return [];
+}
+
+export const workFilters = ["All", "Web", "Mobile", "Branding"] as const;
+export type WorkFilter = (typeof workFilters)[number];
+
+export function projectMatchesFilter(project: Project, filter: WorkFilter): boolean {
+  if (filter === "All") return true;
+  if (filter === "Web") return project.tags.some((t) => /web|react/i.test(t));
+  if (filter === "Mobile") return project.tags.some((t) => /mobile|app|ai|ar|kids/i.test(t));
+  if (filter === "Branding") return project.tags.some((t) => /brand/i.test(t));
+  return true;
 }
 
 export const navLinks = [

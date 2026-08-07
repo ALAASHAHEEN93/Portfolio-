@@ -68,10 +68,14 @@
   animation: fadeUp 0.8s var(--ease) 0.08s both;
 }
 
-.hero__meta-text {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--muted);
+.hero__meta .badge--live {
+  text-decoration: none;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.hero__meta .badge--live:hover {
+  transform: var(--lift);
+  box-shadow: var(--shadow-sm);
 }
 
 .hero__title {

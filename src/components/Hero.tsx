@@ -14,10 +14,13 @@ export default function Hero() {
           <p className="hero__brand">{personalInfo.name}</p>
 
           <div className="hero__meta">
-            <span className="badge badge--live">
+            <a
+              href={`mailto:${personalInfo.email}?subject=Hello%20Alaa`}
+              className="badge badge--live"
+            >
               <span className="badge__dot" />
               Available for work
-            </span>
+            </a>
             <span className="hero__meta-text">{personalInfo.location}</span>
           </div>
 

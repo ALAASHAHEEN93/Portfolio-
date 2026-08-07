@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240" fill="none" role="img" aria-label="CasaVue">
+  <path d="M28 168c0-62 36-112 72-112s72 50 72 112" stroke="#1f2a36" stroke-width="4" stroke-linecap="round"/>
+  <path d="M100 42v28" stroke="#1f2a36" stroke-width="4" stroke-linecap="round"/>
+  <path d="M88 78c0-8 5-14 12-14s12 6 12 14v4H88v-4z" stroke="#1f2a36" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M118 168v-36c0-10 7-18 18-18h8v54" stroke="#1f2a36" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M118 132h26" stroke="#1f2a36" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M58 168v-20h22v20" stroke="#1f2a36" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M64 128c8-14 18-20 26-14 4 10-2 22-12 30-8 2-16-4-14-16z" stroke="#1f2a36" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M70 148c6 4 14 6 20 4" stroke="#1f2a36" stroke-width="3" stroke-linecap="round"/>
+  <text x="100" y="214" text-anchor="middle" fill="#1f2a36" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-style="italic" font-weight="600">Case Vue</text>
+</svg>

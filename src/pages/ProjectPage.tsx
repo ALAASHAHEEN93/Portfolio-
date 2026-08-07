@@ -120,7 +120,7 @@ export default function ProjectPage() {
               <div className="case__title-wrap">
                 {project.logo ? (
                   <img
-                    src={`${project.logo}?v=3`}
+                    src={`${project.logo}?v=7`}
                     alt=""
                     className="case__title-logo"
                     aria-hidden="true"
@@ -189,8 +189,8 @@ export default function ProjectPage() {
             </div>
           </div>
           <div className="case__meta-item">
-            <span className="section-label">Typography</span>
-            <p>{project.typography}</p>
+            <span className="section-label">Outcome</span>
+            <p>{project.outcome}</p>
           </div>
         </section>
 

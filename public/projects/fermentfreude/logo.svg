@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 240" fill="none" role="img" aria-label="Fermentfreude">
+  <circle cx="110" cy="88" r="52" fill="#E8F0DC" stroke="#5F7A4A" stroke-width="4"/>
+  <path d="M88 70c8-18 28-26 44-14 4 16-6 30-20 34-12 2-22-6-24-20z" fill="#8FB56B"/>
+  <path d="M78 108c10-4 22-2 30 6 10-12 28-14 40-4 2 18-10 34-28 38-20 2-38-14-42-40z" fill="#6F9452"/>
+  <path d="M110 54v68" stroke="#5F7A4A" stroke-width="4" stroke-linecap="round"/>
+  <path d="M92 140c10 18 26 28 44 24" stroke="#5F7A4A" stroke-width="4" stroke-linecap="round"/>
+  <text x="110" y="200" text-anchor="middle" fill="#3F5A32" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="22" font-weight="700">Fermentfreude</text>
+  <text x="110" y="222" text-anchor="middle" fill="#6F7F60" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" font-weight="600" letter-spacing="0.12em">FERMENTATION</text>
+</svg>
