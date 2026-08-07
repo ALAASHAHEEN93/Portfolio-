@@ -44,7 +44,7 @@
   height: 70%;
   background:
     radial-gradient(ellipse at 30% 40%, color-mix(in srgb, var(--case-color) 55%, transparent) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 20%, rgba(232, 180, 200, 0.28) 0%, transparent 50%);
+    radial-gradient(ellipse at 80% 20%, rgba(31, 107, 92, 0.16) 0%, transparent 50%);
   pointer-events: none;
   filter: blur(10px);
 }
@@ -242,9 +242,9 @@
 .case__meta {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 28px;
-  padding: 28px;
-  margin-bottom: 56px;
+  gap: 36px 40px;
+  padding: 36px;
+  margin-bottom: 72px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
@@ -300,13 +300,13 @@
 }
 
 .case__process-step {
-  padding: 24px;
+  padding: 28px;
   border-radius: var(--radius-lg);
   background: var(--surface);
   border: 1px solid var(--border);
   position: relative;
   overflow: hidden;
-  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
 }
 
 .case__process-step::after {
@@ -316,7 +316,7 @@
   top: 0;
   bottom: 0;
   width: 3px;
-  background: linear-gradient(180deg, var(--accent-pink), var(--accent));
+  background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 55%, var(--text)));
   opacity: 0;
   transition: opacity 0.35s var(--ease);
 }
@@ -356,7 +356,7 @@
 
 /* Cover */
 .case__cover {
-  padding: 8px 0 48px;
+  padding: 8px 0 64px;
 }
 
 .case__cover-frame {
@@ -369,6 +369,12 @@
   padding: 0;
   cursor: zoom-in;
   display: block;
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+
+.case__cover-frame:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
 }
 
 .case__cover-frame img {
@@ -378,6 +384,11 @@
   object-fit: contain;
   max-height: none;
   margin: 0 auto;
+  transition: transform 0.7s var(--ease);
+}
+
+.case__cover-frame:hover img {
+  transform: scale(1.02);
 }
 
 /* Story */
@@ -867,5 +878,22 @@
     height: 52px;
     font-size: 1.4rem;
     border-radius: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case__cover-frame,
+  .case__cover-frame img,
+  .case__process-step,
+  .case__gallery-item,
+  .case__feature {
+    transition: none;
+  }
+
+  .case__cover-frame:hover,
+  .case__cover-frame:hover img,
+  .case__process-step:hover,
+  .case__feature:hover {
+    transform: none;
   }
 }

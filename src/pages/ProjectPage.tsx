@@ -1,28 +1,45 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import type { CSSProperties } from "react";
 import {
-  getProjectBySlug,
   getBehanceProjectUrl,
   getProjectGallery,
-  projects,
 } from "../data/content";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { useLanguage } from "../i18n/LanguageContext";
+import { usePageMeta } from "../hooks/usePageMeta";
 import "./ProjectPage.css";
-
-const processSteps = [
-  { label: "Discover", detail: "Research, flows, and problem framing" },
-  { label: "Design", detail: "Wireframes, UI systems, and prototypes" },
-  { label: "Build", detail: "Responsive front-end and polish" },
-];
 
 export default function ProjectPage() {
   const { slug } = useParams();
-  const project = slug ? getProjectBySlug(slug) : undefined;
+  const { t, lang, personal, projectList, getProject } = useLanguage();
+  const project = slug ? getProject(slug) : undefined;
   const [progress, setProgress] = useState(0);
   const [lightbox, setLightbox] = useState<string | null>(null);
   const [showTop, setShowTop] = useState(false);
+
+  usePageMeta({
+    title: project
+      ? `${project.title} | ${personal.name}`
+      : `${personal.name} | Portfolio`,
+    description: project
+      ? project.description
+      : lang === "de"
+        ? "Portfolio von Alaa Shaheen"
+        : "Alaa Shaheen portfolio",
+    image: project?.image || project?.logo || "/og.png",
+    path: project ? `/project/${project.slug}` : "/",
+  });
+
+  const processSteps = useMemo(() => {
+    if (project?.approach?.length) return project.approach;
+    return [
+      { label: t("discover"), detail: t("discoverDetail") },
+      { label: t("design"), detail: t("designDetail") },
+      { label: t("build"), detail: t("buildDetail") },
+    ];
+  }, [project, t]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -56,9 +73,10 @@ export default function ProjectPage() {
 
   if (!project) return <Navigate to="/" replace />;
 
-  const currentIndex = projects.findIndex((p) => p.slug === project.slug);
-  const nextProject = projects[(currentIndex + 1) % projects.length];
-  const prevProject = projects[(currentIndex - 1 + projects.length) % projects.length];
+  const currentIndex = projectList.findIndex((p) => p.slug === project.slug);
+  const nextProject = projectList[(currentIndex + 1) % projectList.length];
+  const prevProject =
+    projectList[(currentIndex - 1 + projectList.length) % projectList.length];
   const behanceUrl = getBehanceProjectUrl(project);
   const coverImage = project.image;
   const gallery = getProjectGallery(project).filter((src) => src !== coverImage);
@@ -74,7 +92,7 @@ export default function ProjectPage() {
       <main
         className="case"
         style={{ "--case-color": project.color } as CSSProperties}
-        key={project.slug}
+        key={`${project.slug}`}
       >
         <section className="case__hero">
           <div className="case__hero-glow" aria-hidden="true" />
@@ -91,19 +109,27 @@ export default function ProjectPage() {
                     strokeLinejoin="round"
                   />
                 </svg>
-                Work
+                {t("backToWork")}
               </Link>
               <div className="case__pager">
-                <Link to={`/project/${prevProject.slug}`} className="case__pager-btn" aria-label="Previous project">
+                <Link
+                  to={`/project/${prevProject.slug}`}
+                  className="case__pager-btn"
+                  aria-label={t("prevProject")}
+                >
                   <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                     <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </Link>
                 <span className="case__index">
                   {String(currentIndex + 1).padStart(2, "0")}
-                  <span> / {String(projects.length).padStart(2, "0")}</span>
+                  <span> / {String(projectList.length).padStart(2, "0")}</span>
                 </span>
-                <Link to={`/project/${nextProject.slug}`} className="case__pager-btn" aria-label="Next project">
+                <Link
+                  to={`/project/${nextProject.slug}`}
+                  className="case__pager-btn"
+                  aria-label={t("nextProjectAria")}
+                >
                   <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                     <path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -120,7 +146,7 @@ export default function ProjectPage() {
               <div className="case__title-wrap">
                 {project.logo ? (
                   <img
-                    src={`${project.logo}?v=7`}
+                    src={`${project.logo}?v=15`}
                     alt=""
                     className="case__title-logo"
                     aria-hidden="true"
@@ -142,10 +168,30 @@ export default function ProjectPage() {
                     rel="noopener noreferrer"
                     className="btn btn--primary"
                   >
-                    View on Behance
+                    {t("viewBehance")}
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                       <path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
+                  </a>
+                )}
+                {project.figmaUrl && (
+                  <a
+                    href={project.figmaUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={behanceUrl ? "btn" : "btn btn--primary"}
+                  >
+                    {t("openFigma")}
+                  </a>
+                )}
+                {project.prototypeUrl && (
+                  <a
+                    href={project.prototypeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={behanceUrl || project.figmaUrl ? "btn" : "btn btn--primary"}
+                  >
+                    {t("openPrototype")}
                   </a>
                 )}
                 {project.externalUrl && (
@@ -153,9 +199,13 @@ export default function ProjectPage() {
                     href={project.externalUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={behanceUrl ? "btn" : "btn btn--primary"}
+                    className={
+                      behanceUrl || project.figmaUrl || project.prototypeUrl
+                        ? "btn"
+                        : "btn btn--primary"
+                    }
                   >
-                    Visit live site
+                    {t("visitLive")}
                   </a>
                 )}
               </div>
@@ -177,15 +227,15 @@ export default function ProjectPage() {
 
         <section className="case__meta section__inner">
           <div className="case__meta-item">
-            <span className="section-label">Role</span>
+            <span className="section-label">{t("role")}</span>
             <p>{project.role}</p>
           </div>
           <div className="case__meta-item">
-            <span className="section-label">What I owned</span>
+            <span className="section-label">{t("owned")}</span>
             <p>{project.owned}</p>
           </div>
           <div className="case__meta-item">
-            <span className="section-label">Tools</span>
+            <span className="section-label">{t("tools")}</span>
             <div className="case__chips">
               {project.tools.map((tool) => (
                 <span key={tool} className="chip">{tool}</span>
@@ -193,13 +243,17 @@ export default function ProjectPage() {
             </div>
           </div>
           <div className="case__meta-item">
-            <span className="section-label">Outcome</span>
+            <span className="section-label">{t("outcome")}</span>
             <p>{project.outcome}</p>
+          </div>
+          <div className="case__meta-item">
+            <span className="section-label">{t("typography")}</span>
+            <p>{project.typography}</p>
           </div>
         </section>
 
         <section className="case__process section__inner">
-          <h2 className="section-label">Approach</h2>
+          <h2 className="section-label">{t("approach")}</h2>
           <div className="case__process-track">
             {processSteps.map((step, i) => (
               <div key={step.label} className="case__process-step">
@@ -214,7 +268,7 @@ export default function ProjectPage() {
         <section className="case__story section__inner">
           {project.highlights && (
             <div className="case__features">
-              <h2 className="section-label">Key features</h2>
+              <h2 className="section-label">{t("keyFeatures")}</h2>
               <ol className="case__feature-list">
                 {project.highlights.map((item, i) => (
                   <li key={item} className="case__feature">
@@ -228,11 +282,11 @@ export default function ProjectPage() {
 
           <div className="case__split">
             <article className="case__panel surface">
-              <h2 className="section-label">Problem</h2>
+              <h2 className="section-label">{t("problem")}</h2>
               <p className="case__text">{project.problem}</p>
             </article>
             <article className="case__panel surface surface--soft">
-              <h2 className="section-label">Solution</h2>
+              <h2 className="section-label">{t("solution")}</h2>
               <p className="case__text">{project.solution}</p>
             </article>
           </div>
@@ -241,7 +295,7 @@ export default function ProjectPage() {
         {gallery.length > 0 && (
           <section className="case__gallery-wrap">
             <div className="section__inner">
-              <h2 className="section-label">Design</h2>
+              <h2 className="section-label">{t("designGallery")}</h2>
               <div className="case__gallery">
                 {gallery.map((src, i) => (
                   <button
@@ -266,8 +320,8 @@ export default function ProjectPage() {
           <section className="case__cta-band section__inner">
             <div className="case__cta-band-inner">
               <div>
-                <h2>Want the full visual story?</h2>
-                <p>See the complete case study, screens, and process on Behance.</p>
+                <h2>{t("fullStoryTitle")}</h2>
+                <p>{t("fullStorySub")}</p>
               </div>
               <a
                 href={behanceUrl}
@@ -275,7 +329,7 @@ export default function ProjectPage() {
                 rel="noopener noreferrer"
                 className="btn btn--primary"
               >
-                Open Behance
+                {t("openBehance")}
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -285,9 +339,9 @@ export default function ProjectPage() {
         )}
 
         <section className="case__strip section__inner">
-          <span className="section-label">All projects</span>
+          <span className="section-label">{t("allProjects")}</span>
           <div className="case__strip-list">
-            {projects.map((p, i) => (
+            {projectList.map((p, i) => (
               <Link
                 key={p.slug}
                 to={`/project/${p.slug}`}
@@ -302,7 +356,7 @@ export default function ProjectPage() {
         </section>
 
         <section className="case__next section__inner">
-          <span className="section-label">Next project</span>
+          <span className="section-label">{t("nextProject")}</span>
           <Link
             to={`/project/${nextProject.slug}`}
             className="case__next-card"
@@ -333,7 +387,7 @@ export default function ProjectPage() {
           aria-modal="true"
           onClick={() => setLightbox(null)}
         >
-          <button type="button" className="case__lightbox-close" aria-label="Close image">
+          <button type="button" className="case__lightbox-close" aria-label={t("closeImage")}>
             ✕
           </button>
           <img src={lightbox} alt="" onClick={(e) => e.stopPropagation()} />
@@ -343,7 +397,7 @@ export default function ProjectPage() {
       <button
         type="button"
         className={`case__top ${showTop ? "is-visible" : ""}`}
-        aria-label="Back to top"
+        aria-label={t("backToTop")}
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       >
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">

@@ -5,7 +5,7 @@
 .about__shell {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .about__card {
@@ -13,7 +13,7 @@
   grid-template-columns: auto 1fr;
   gap: 48px;
   align-items: center;
-  padding: 48px;
+  padding: 44px;
   background: var(--surface);
   border-radius: var(--radius-xl);
   border: 1px solid var(--border);
@@ -29,10 +29,10 @@
 .about__avatar {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  border-radius: 28px;
   overflow: hidden;
   box-shadow: var(--shadow-md);
-  border: 3px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--border);
 }
 
 .about__avatar img {
@@ -49,7 +49,7 @@
 .about__bio {
   margin-top: 12px;
   margin-bottom: 28px;
-  max-width: 520px;
+  max-width: 34rem;
 }
 
 .about__stats {
@@ -71,7 +71,7 @@
 
 .about__stat-value {
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.98rem;
 }
 
 .about__tags {
@@ -83,12 +83,49 @@
 .about__skills {
   padding: 22px 28px;
   border-radius: var(--radius-xl);
-  background: var(--surface-2);
-  border: 1px solid var(--border);
+  background: var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--accent) 12%, transparent);
   display: flex;
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
+}
+
+.about__principles {
+  padding: 28px;
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.about__principles .section-label {
+  margin-bottom: 18px;
+}
+
+.about__principles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.about__principle {
+  padding: 18px 18px 20px;
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--accent-soft) 45%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--accent) 10%, var(--border));
+}
+
+.about__principle h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.about__principle p {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--muted);
 }
 
 .about__skills .section-label {
@@ -102,11 +139,15 @@
   gap: 8px;
 }
 
+.about__skills .chip {
+  background: rgba(255, 252, 248, 0.85);
+}
+
 @media (max-width: 768px) {
   .about__card {
     grid-template-columns: 1fr;
     text-align: center;
-    padding: 32px 24px;
+    padding: 28px 22px;
     gap: 28px;
   }
 
@@ -128,5 +169,13 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 20px;
+  }
+
+  .about__principles {
+    padding: 20px;
+  }
+
+  .about__principles-grid {
+    grid-template-columns: 1fr;
   }
 }

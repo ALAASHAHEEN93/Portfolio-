@@ -2,30 +2,49 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import type { CSSProperties } from "react";
 import {
-  personalInfo,
-  projects,
-  workFilters,
   projectMatchesFilter,
+  getProjectGallery,
 } from "../data/content";
 import type { Project, WorkFilter } from "../data/content";
 import { useReveal } from "../hooks/useReveal";
+import { useLanguage } from "../i18n/LanguageContext";
 import "./Work.css";
 
+const filterKeys = ["All", "Web", "Mobile", "Branding"] as const;
+
+function getCardVisual(project: Project): { type: "image" | "logo"; src: string } {
+  if (project.slug === "coffee-lab") {
+    return { type: "logo", src: "/projects/coffee-lab/logo-light.svg" };
+  }
+  if (project.logo) return { type: "logo", src: project.logo };
+  const gallery = getProjectGallery(project);
+  if (gallery[0]) return { type: "image", src: gallery[0] };
+  return { type: "logo", src: "" };
+}
+
 export default function Work() {
+  const { t, personal, projectList } = useLanguage();
   const headerRef = useReveal<HTMLDivElement>();
   const [filter, setFilter] = useState<WorkFilter>("All");
 
+  const filterLabels: Record<WorkFilter, string> = {
+    All: t("filterAll"),
+    Web: t("filterWeb"),
+    Mobile: t("filterMobile"),
+    Branding: t("filterBranding"),
+  };
+
   const featured = useMemo(
-    () => projects.find((p) => p.featured && projectMatchesFilter(p, filter)),
-    [filter],
+    () => projectList.find((p) => p.featured && projectMatchesFilter(p, filter)),
+    [filter, projectList],
   );
 
   const list = useMemo(
     () =>
-      projects.filter(
+      projectList.filter(
         (p) => projectMatchesFilter(p, filter) && p.slug !== featured?.slug,
       ),
-    [filter, featured],
+    [filter, featured, projectList],
   );
 
   return (
@@ -33,14 +52,12 @@ export default function Work() {
       <div className="section__inner">
         <div ref={headerRef} className="work__header reveal">
           <div className="section-head">
-            <span className="badge badge--accent">Work</span>
-            <h2 className="section-title">Selected projects</h2>
-            <p className="section-sub">
-              Case studies across mobile apps, branding, and front-end builds.
-            </p>
+            <span className="badge badge--accent">{t("workBadge")}</span>
+            <h2 className="section-title">{t("workTitle")}</h2>
+            <p className="section-sub">{t("workSub")}</p>
           </div>
           <a
-            href={personalInfo.socials.behance}
+            href={personal.socials.behance}
             target="_blank"
             rel="noopener noreferrer"
             className="btn"
@@ -53,7 +70,7 @@ export default function Work() {
         </div>
 
         <div className="work__filters" role="tablist" aria-label="Filter projects">
-          {workFilters.map((item) => (
+          {filterKeys.map((item) => (
             <button
               key={item}
               type="button"
@@ -62,14 +79,12 @@ export default function Work() {
               className={`work__filter${filter === item ? " is-active" : ""}`}
               onClick={() => setFilter(item)}
             >
-              {item}
+              {filterLabels[item]}
             </button>
           ))}
         </div>
 
-        {featured && (
-          <ProjectCard project={featured} index={0} featured />
-        )}
+        {featured && <ProjectCard project={featured} index={0} featured />}
 
         <div className="work__grid">
           {list.map((project, i) => (
@@ -90,25 +105,27 @@ function ProjectCard({
   index: number;
   featured?: boolean;
 }) {
+  const { t } = useLanguage();
   const ref = useReveal<HTMLAnchorElement>();
-  const darkMedia = project.slug === "coffee-lab";
-  const logoSrc = darkMedia
-    ? "/projects/coffee-lab/logo-light.svg"
-    : project.logo;
+  const visual = getCardVisual(project);
+  const darkMedia =
+    visual.type === "logo" && project.slug === "coffee-lab";
+  const creamMedia =
+    visual.type === "logo" && project.slug === "fermentfreude";
 
   return (
     <Link
       ref={ref}
       to={`/project/${project.slug}`}
-      className={`work__card reveal reveal-delay-${(index % 4) + 1}${darkMedia ? " work__card--dark" : ""}${featured ? " work__card--featured" : ""}`}
+      className={`work__card reveal reveal-delay-${(index % 4) + 1}${darkMedia ? " work__card--dark" : ""}${creamMedia ? " work__card--cream" : ""}${featured ? " work__card--featured" : ""}${visual.type === "image" ? " work__card--shot" : ""}`}
       style={{ "--card-color": project.color } as CSSProperties}
     >
       <div className="work__media">
-        {logoSrc ? (
+        {visual.src ? (
           <img
-            src={`${logoSrc}?v=7`}
+            src={`${visual.src}?v=15`}
             alt=""
-            className="work__logo"
+            className={visual.type === "logo" ? "work__logo" : "work__shot"}
             loading="lazy"
           />
         ) : (
@@ -118,12 +135,13 @@ function ProjectCard({
 
       <div className="work__body">
         <div className="work__meta">
-          {featured && <span className="work__featured-tag">Featured</span>}
+          {featured && <span className="work__featured-tag">{t("featured")}</span>}
           <span className="work__year">{project.year}</span>
           <span className="work__tags">{project.tags.slice(0, 2).join(" · ")}</span>
         </div>
         <h3 className="work__title">{project.title}</h3>
         <p className="work__desc">{project.description}</p>
+        <span className="work__link">{t("viewCase")}</span>
       </div>
     </Link>
   );

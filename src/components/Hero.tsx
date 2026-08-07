@@ -1,46 +1,47 @@
-import { personalInfo } from "../data/content";
+import { useLanguage } from "../i18n/LanguageContext";
 import "./Hero.css";
 
 export default function Hero() {
+  const { t, personal } = useLanguage();
+
   return (
     <section className="hero section">
-      <div className="hero__blobs" aria-hidden="true">
-        <div className="blob blob--1" />
-        <div className="blob blob--2" />
+      <div className="hero__atmosphere" aria-hidden="true">
+        <div className="hero__wash" />
+        <div className="hero__rule" />
       </div>
 
       <div className="hero__layout section__inner">
         <div className="hero__content">
-          <p className="hero__brand">{personalInfo.name}</p>
-
           <div className="hero__meta">
             <a
-              href={`mailto:${personalInfo.email}?subject=Hello%20Alaa`}
+              href={`mailto:${personal.email}?subject=Hello%20Alaa`}
               className="badge badge--live"
             >
               <span className="badge__dot" />
-              Available for work
+              {t("available")}
             </a>
-            <span className="hero__meta-text">{personalInfo.location}</span>
+            <span className="hero__meta-text">{personal.location}</span>
           </div>
 
+          <p className="hero__brand">{personal.name}</p>
+
           <h1 className="hero__title">
-            <span className="hero__line">Crafting</span>
-            <span className="hero__line hero__line--accent">digital</span>
-            <span className="hero__line">experiences</span>
+            <span className="hero__line">{t("heroLine1")}</span>
+            <span className="hero__line hero__line--accent">{t("heroLine2")}</span>
           </h1>
 
-          <p className="hero__sub">{personalInfo.about}</p>
+          <p className="hero__sub">{personal.about}</p>
 
           <div className="hero__actions">
             <a href="#work" className="btn btn--primary">
-              View work
+              {t("viewWork")}
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </a>
             <a
-              href={personalInfo.socials.behance}
+              href={personal.socials.behance}
               target="_blank"
               rel="noopener noreferrer"
               className="btn"
@@ -52,10 +53,10 @@ export default function Hero() {
 
         <div className="hero__photo-wrap">
           <div className="hero__photo">
-            <div className="hero__photo-glow" />
             <div className="hero__photo-frame">
-              <img src="/profile-original.png" alt={personalInfo.name} />
+              <img src="/profile-original.png" alt={personal.name} />
             </div>
+            <p className="hero__photo-caption">{t("photoCaption")}</p>
           </div>
         </div>
       </div>

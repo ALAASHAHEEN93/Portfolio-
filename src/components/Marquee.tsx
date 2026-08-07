@@ -1,14 +1,15 @@
-import { skills } from "../data/content";
+import { useLanguage } from "../i18n/LanguageContext";
 import "./Marquee.css";
 
 export default function Marquee() {
-  const items = [...skills, ...skills];
+  const { skillItems } = useLanguage();
+  const items = [...skillItems, ...skillItems];
 
   return (
     <div className="marquee">
       <div className="marquee__track">
         {items.map((skill, i) => (
-          <span key={i} className="marquee__item">
+          <span key={`${skill}-${i}`} className="marquee__item">
             {skill}
             <span className="marquee__shape" />
           </span>
