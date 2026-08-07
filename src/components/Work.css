@@ -164,6 +164,17 @@
   max-height: 72%;
 }
 
+.work__card--coffee .work__media {
+  background: linear-gradient(155deg, #f3e7d8 0%, #e8d5c0 100%);
+  border-color: rgba(22, 21, 19, 0.08);
+}
+
+.work__card--coffee .work__logo {
+  width: min(72%, 320px);
+  height: auto;
+  max-height: 42%;
+}
+
 .work__letter {
   font-family: var(--font-display);
   font-size: 3rem;

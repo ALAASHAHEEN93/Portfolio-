@@ -20,8 +20,8 @@ export default function Home() {
         : `${personal.name} | UI/UX Designer`,
     description:
       lang === "de"
-        ? "Portfolio von Alaa Shaheen — UI/UX Design und Front-end in Köln. Mobile Apps, Branding und Web."
-        : "Alaa Shaheen — UI/UX Designer in Cologne. Portfolio of mobile apps, branding, and front-end work.",
+        ? "Portfolio von Alaa Shaheen. UI/UX Design und Front-end in Köln. Mobile Apps, Branding und Web."
+        : "Alaa Shaheen. UI/UX Designer in Cologne. Portfolio of mobile apps, branding, and front-end work.",
     image: "/og.png",
     path: "/",
   });

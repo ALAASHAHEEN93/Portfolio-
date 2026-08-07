@@ -13,9 +13,6 @@ import "./Work.css";
 const filterKeys = ["All", "Web", "Mobile", "Branding"] as const;
 
 function getCardVisual(project: Project): { type: "image" | "logo"; src: string } {
-  if (project.slug === "coffee-lab") {
-    return { type: "logo", src: "/projects/coffee-lab/logo-light.svg" };
-  }
   if (project.logo) return { type: "logo", src: project.logo };
   const gallery = getProjectGallery(project);
   if (gallery[0]) return { type: "image", src: gallery[0] };
@@ -108,22 +105,23 @@ function ProjectCard({
   const { t } = useLanguage();
   const ref = useReveal<HTMLAnchorElement>();
   const visual = getCardVisual(project);
-  const darkMedia =
-    visual.type === "logo" && project.slug === "coffee-lab";
+  const darkMedia = false;
   const creamMedia =
     visual.type === "logo" && project.slug === "fermentfreude";
+  const coffeeMedia =
+    visual.type === "logo" && project.slug === "coffee-lab";
 
   return (
     <Link
       ref={ref}
       to={`/project/${project.slug}`}
-      className={`work__card reveal reveal-delay-${(index % 4) + 1}${darkMedia ? " work__card--dark" : ""}${creamMedia ? " work__card--cream" : ""}${featured ? " work__card--featured" : ""}${visual.type === "image" ? " work__card--shot" : ""}`}
+      className={`work__card reveal reveal-delay-${(index % 4) + 1}${darkMedia ? " work__card--dark" : ""}${creamMedia ? " work__card--cream" : ""}${coffeeMedia ? " work__card--coffee" : ""}${featured ? " work__card--featured" : ""}${visual.type === "image" ? " work__card--shot" : ""}`}
       style={{ "--card-color": project.color } as CSSProperties}
     >
       <div className="work__media">
         {visual.src ? (
           <img
-            src={`${visual.src}?v=15`}
+            src={`${visual.src}?v=16`}
             alt=""
             className={visual.type === "logo" ? "work__logo" : "work__shot"}
             loading="lazy"

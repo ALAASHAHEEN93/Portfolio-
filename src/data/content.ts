@@ -314,12 +314,12 @@ const galleryManifest: Record<string, string[]> = {
   "coffee-lab": [
     "/projects/coffee-lab/01.jpg",
     "/projects/coffee-lab/02.jpg",
+    "/projects/coffee-lab/03.jpg",
+    "/projects/coffee-lab/04.jpg",
+    "/projects/coffee-lab/05.jpg",
+    "/projects/coffee-lab/06.jpg",
   ],
-  fermentfreude: [
-    "/projects/fermentfreude/cover.png",
-    "/projects/fermentfreude/web-home.png",
-    "/projects/fermentfreude/web-shop.png",
-  ],
+  fermentfreude: [],
   abaya: [
     "/projects/abaya/01.jpg",
     "/projects/abaya/02.jpg",

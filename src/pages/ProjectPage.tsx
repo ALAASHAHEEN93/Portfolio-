@@ -264,7 +264,7 @@ export default function ProjectPage() {
                     onClick={() => setLightbox(src)}
                   >
                     <img
-                      src={`${src}?v=2`}
+                      src={`${src}?v=17`}
                       alt={`${project.title} design ${i + 1}`}
                       loading="lazy"
                     />

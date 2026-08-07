@@ -11,6 +11,7 @@ type UiDict = {
   available: string;
   heroLine1: string;
   heroLine2: string;
+  heroSub: string;
   viewWork: string;
   photoCaption: string;
   workBadge: string;
@@ -87,10 +88,11 @@ export const ui: Record<Lang, UiDict> = {
     openMenu: "Open menu",
     closeMenu: "Close menu",
     available: "Available for work",
-    heroLine1: "Interfaces with",
-    heroLine2: "clarity & craft",
+    heroLine1: "Product interfaces",
+    heroLine2: "shaped with clarity & craft",
+    heroSub: "UI/UX and front-end for web and mobile. Research, flows, polished UI.",
     viewWork: "View selected work",
-    photoCaption: "UI/UX · Front-end",
+    photoCaption: "Cologne · Designer",
     workBadge: "Work",
     workTitle: "Selected projects",
     workSub: "Product design and interfaces across apps, brands, and the web.",
@@ -164,10 +166,11 @@ export const ui: Record<Lang, UiDict> = {
     openMenu: "Menü öffnen",
     closeMenu: "Menü schließen",
     available: "Verfügbar für Projekte",
-    heroLine1: "Interfaces mit",
-    heroLine2: "Klarheit & Handwerk",
+    heroLine1: "Produktinterfaces",
+    heroLine2: "mit Klarheit & Handwerk",
+    heroSub: "UI/UX und Front-end für Web und Mobile. Research, Flows, fertiges UI.",
     viewWork: "Ausgewählte Arbeiten",
-    photoCaption: "UI/UX · Front-end",
+    photoCaption: "Köln · Designer",
     workBadge: "Arbeit",
     workTitle: "Ausgewählte Projekte",
     workSub: "Produktdesign und Interfaces für Apps, Marken und das Web.",
