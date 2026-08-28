@@ -1,0 +1,138 @@
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  animation: introIn 0.5s var(--ease) both;
+}
+
+.intro--exit {
+  animation: introOut 0.48s var(--ease) forwards;
+  pointer-events: none;
+}
+
+.intro__skip {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 8px 12px;
+  border-radius: 999px;
+  transition: color 0.25s var(--ease), background 0.25s var(--ease);
+}
+
+.intro__skip:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.intro__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: min(100%, 320px);
+  padding: 24px;
+}
+
+.intro__logo {
+  margin-bottom: 24px;
+  animation: fadeUp 0.7s var(--ease) 0.1s both;
+}
+
+.intro__label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+  animation: fadeUp 0.7s var(--ease) 0.16s both;
+}
+
+.intro__name {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 32px;
+  animation: fadeUp 0.7s var(--ease) 0.22s both;
+}
+
+.intro__progress {
+  width: 100%;
+  animation: fadeUp 0.7s var(--ease) 0.28s both;
+}
+
+.intro__bar {
+  height: 2px;
+  border-radius: 2px;
+  background: var(--surface-2);
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.intro__bar-fill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-pink));
+  border-radius: inherit;
+  transition: width 0.08s linear;
+}
+
+.intro__percent {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+
+.app-shell {
+  opacity: 1;
+}
+
+.app-shell:not(.is-ready) {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes introIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes introOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@media (max-width: 959px) {
+  .intro__skip {
+    top: 72px;
+    right: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro,
+  .intro--exit,
+  .intro__logo,
+  .intro__label,
+  .intro__name,
+  .intro__progress {
+    animation: none;
+  }
+
+  .app-shell.is-ready {
+    transition: none;
+  }
+}

@@ -6,6 +6,7 @@ export const personalInfo = {
   about:
     "I design clear product experiences and build the interfaces that bring them to life, from research and flows to polished UI.",
   resumeUrl: "/CV.pdf",
+  photo: "/profile-original.png",
   socials: {
     behance: "https://www.behance.net/alaashaheen16",
     github: "https://github.com/ALAASHAHEEN93",
@@ -78,6 +79,47 @@ export const education: EducationItem[] = [
   },
 ];
 
+export type Certificate = {
+  id: string;
+  title: { en: string; de: string; ar: string };
+  issuer: { en: string; de: string; ar: string };
+  year: string;
+  file: string;
+};
+
+export const certificates: Certificate[] = [
+  {
+    id: "beam-web-design",
+    title: {
+      en: "Web Design Training",
+      de: "Webdesign-Weiterbildung",
+      ar: "تدريب تصميم الويب",
+    },
+    issuer: {
+      en: "Beam Institute of Technology",
+      de: "Beam Institute of Technology",
+      ar: "Beam Institute of Technology",
+    },
+    year: "2024",
+    file: "/certificates/web-design-certificate.pdf",
+  },
+  {
+    id: "beam-certificate",
+    title: {
+      en: "Web Design Certificate",
+      de: "Webdesign-Zertifikat",
+      ar: "شهادة تصميم الويب",
+    },
+    issuer: {
+      en: "Beam Institute of Technology",
+      de: "Beam Institute of Technology",
+      ar: "Beam Institute of Technology",
+    },
+    year: "2025",
+    file: "/certificates/beam-zertifikat.pdf",
+  },
+];
+
 export type LanguageItem = {
   name: string;
   level: string;
@@ -106,16 +148,68 @@ export const skills = [
   "Webflow",
 ];
 
+export type SkillEntry = {
+  id: string;
+  level: number;
+  label: { en: string; de: string };
+};
+
+export type SkillCategory = {
+  id: string;
+  title: { en: string; de: string };
+  items: SkillEntry[];
+};
+
+export const skillCategories: SkillCategory[] = [
+  {
+    id: "design",
+    title: { en: "Design", de: "Design" },
+    items: [
+      { id: "figma", level: 95, label: { en: "Figma", de: "Figma" } },
+      { id: "ui", level: 92, label: { en: "UI Design", de: "UI Design" } },
+      { id: "ux", level: 85, label: { en: "UX Research", de: "UX Research" } },
+      { id: "wireframe", level: 90, label: { en: "Wireframing", de: "Wireframing" } },
+      { id: "prototype", level: 88, label: { en: "Prototyping", de: "Prototyping" } },
+      { id: "systems", level: 85, label: { en: "Design Systems", de: "Design Systems" } },
+      { id: "flows", level: 90, label: { en: "User Flows", de: "User Flows" } },
+    ],
+  },
+  {
+    id: "development",
+    title: { en: "Development", de: "Development" },
+    items: [
+      { id: "html", level: 88, label: { en: "HTML / CSS", de: "HTML / CSS" } },
+      { id: "javascript", level: 78, label: { en: "JavaScript", de: "JavaScript" } },
+      { id: "react", level: 80, label: { en: "React", de: "React" } },
+      { id: "responsive", level: 90, label: { en: "Responsive UI", de: "Responsive UI" } },
+      { id: "typescript", level: 70, label: { en: "TypeScript", de: "TypeScript" } },
+    ],
+  },
+  {
+    id: "tools",
+    title: { en: "Tools & Craft", de: "Tools & Craft" },
+    items: [
+      { id: "webflow", level: 72, label: { en: "Webflow", de: "Webflow" } },
+      { id: "accessibility", level: 82, label: { en: "Accessibility", de: "Barrierefreiheit" } },
+      { id: "handoff", level: 88, label: { en: "Design Handoff", de: "Design Handoff" } },
+      { id: "teamwork", level: 90, label: { en: "Team Collaboration", de: "Teamarbeit" } },
+    ],
+  },
+];
+
 export type ApproachStep = {
   label: string;
   detail: string;
 };
+
+export type ProjectCategory = "Web" | "Mobile" | "Branding";
 
 export type Project = {
   slug: string;
   title: string;
   year: string;
   tags: string[];
+  categories: ProjectCategory[];
   color: string;
   featured?: boolean;
   externalUrl?: string;
@@ -135,6 +229,7 @@ export type Project = {
   gallery?: string[];
   figmaUrl?: string;
   prototypeUrl?: string;
+  ogImage?: string;
 };
 
 export const projects: Project[] = [
@@ -143,9 +238,11 @@ export const projects: Project[] = [
     title: "Coffee Lab",
     year: "2026",
     tags: ["Web Design", "E-commerce", "Branding"],
+    categories: ["Web", "Branding"],
     color: "#C49A6C",
     featured: true,
     logo: "/projects/coffee-lab/logo.svg",
+    ogImage: "/projects/coffee-lab/01.jpg",
     description: "Luxury coffee brand site for roasting, blends, and shopping.",
     role: "UI/UX Designer, Front-End Developer",
     tools: ["Figma", "React", "HTML", "CSS", "JavaScript"],
@@ -166,12 +263,14 @@ export const projects: Project[] = [
     slug: "fermentfreude",
     title: "Fermentfreude",
     year: "2026",
-    tags: ["Web Design", "UI/UX", "React"],
+    tags: ["Web Design", "UI/UX", "React", "Branding"],
+    categories: ["Web", "Branding"],
     color: "#F7EFDA",
     featured: true,
     externalUrl: "https://www.fermentfreude.at/",
     behanceUrl: "https://www.behance.net/gallery/246062163/fermentfreude",
     logo: "/projects/fermentfreude/logo.png",
+    ogImage: "/projects/fermentfreude/cover.png",
     description: "Rebrand and React website for a fermentation brand.",
     role: "Volunteer UX/UI Designer & Front-End Developer",
     tools: ["Figma", "React", "HTML", "CSS", "JavaScript"],
@@ -193,9 +292,11 @@ export const projects: Project[] = [
     title: "CasaVue",
     year: "2025",
     tags: ["Mobile App", "E-commerce", "AR"],
+    categories: ["Mobile"],
     color: "#E6E0D6",
     behanceUrl: "https://www.behance.net/gallery/230204025/Furniture-app",
     logo: "/projects/case-vue/logo.png",
+    ogImage: "/projects/case-vue/01.png",
     description: "Furniture shopping app with browsing and AR previews.",
     role: "UX/UI Designer, UX Researcher",
     tools: ["Figma", "FigJam", "Google Forms", "Pencil & Paper"],
@@ -217,9 +318,11 @@ export const projects: Project[] = [
     title: "Abaya App Store",
     year: "2025",
     tags: ["Mobile App", "E-commerce", "UI/UX"],
+    categories: ["Mobile"],
     color: "#D4C4B0",
     behanceUrl: "https://www.behance.net/gallery/239610529/Abaya-App-Store",
     logo: "/projects/abaya/logo.png",
+    ogImage: "/projects/abaya/cover.png",
     description: "Calm mobile shopping app for abaya and modest fashion.",
     role: "UX/UI Designer, UX Researcher",
     tools: ["Figma", "FigJam", "Pencil & Paper"],
@@ -241,9 +344,11 @@ export const projects: Project[] = [
     title: "CallTrack",
     year: "2025",
     tags: ["Mobile App", "AI", "UI/UX"],
+    categories: ["Mobile"],
     color: "#C4B5E8",
     behanceUrl: "https://www.behance.net/gallery/238047517/Call-Track",
     logo: "/projects/calltrack/logo.png",
+    ogImage: "/projects/calltrack/cover.png",
     description: "AI calorie app that reads nutrition from meal photos.",
     role: "UX/UI Designer, UX Researcher",
     tools: ["Figma", "FigJam", "Google Forms", "Pencil & Paper"],
@@ -265,9 +370,11 @@ export const projects: Project[] = [
     title: "LittleChapter",
     year: "2025",
     tags: ["Mobile App", "Kids", "Storytelling"],
+    categories: ["Mobile"],
     color: "#E8C4D4",
     logo: "/projects/littlechapter/logo.png",
     behanceUrl: "https://www.behance.net/gallery/235882915/App-Story-For-Kids",
+    ogImage: "/projects/littlechapter/cover.png",
     description: "Calm storytelling app for parents and kids together.",
     role: "UX/UI Designer, UX Researcher",
     tools: ["Figma", "FigJam", "Google Forms", "Pencil & Paper"],
@@ -289,9 +396,11 @@ export const projects: Project[] = [
     title: "Grove",
     year: "2025",
     tags: ["Mobile App", "AI", "Design System"],
+    categories: ["Mobile"],
     color: "#C8E8B5",
     behanceUrl: "https://www.behance.net/gallery/230573965/Plant-Shop-and-Care",
     logo: "/projects/grove/logo.png",
+    ogImage: "/projects/grove/01.png",
     description: "Plant shop and care app with AI plant health checks.",
     role: "UX/UI Designer, UX Researcher",
     tools: ["Figma", "FigJam", "Google Forms", "Pencil & Paper"],
@@ -393,15 +502,28 @@ export function getProjectGallery(project: Project): string[] {
   return [];
 }
 
+export function getProjectOgImage(project: Project): string {
+  if (project.ogImage) return project.ogImage;
+  const gallery = getProjectGallery(project);
+  if (gallery.length) return gallery[0];
+  if (project.logo) return project.logo;
+  return "/og.png";
+}
+
 export const workFilters = ["All", "Web", "Mobile", "Branding"] as const;
 export type WorkFilter = (typeof workFilters)[number];
 
 export function projectMatchesFilter(project: Project, filter: WorkFilter): boolean {
   if (filter === "All") return true;
+  if (project.categories?.length) return project.categories.includes(filter as ProjectCategory);
   if (filter === "Web") return project.tags.some((t) => /web|react|webdesign/i.test(t));
   if (filter === "Mobile") return project.tags.some((t) => /mobile|app|ai|ar|kids|kinder|ki/i.test(t));
   if (filter === "Branding") return project.tags.some((t) => /brand/i.test(t));
   return true;
+}
+
+export function countProjectsByFilter(projects: Project[], filter: WorkFilter): number {
+  return projects.filter((p) => projectMatchesFilter(p, filter)).length;
 }
 
 export const navLinks = [

@@ -4,11 +4,12 @@ import type { CSSProperties } from "react";
 import {
   getBehanceProjectUrl,
   getProjectGallery,
+  getProjectOgImage,
 } from "../data/content";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useLanguage } from "../i18n/LanguageContext";
 import { usePageMeta } from "../hooks/usePageMeta";
+import { trackEvent } from "../lib/analytics";
 import "./ProjectPage.css";
 
 export default function ProjectPage() {
@@ -27,10 +28,18 @@ export default function ProjectPage() {
       ? project.description
       : lang === "de"
         ? "Portfolio von Alaa Shaheen"
-        : "Alaa Shaheen portfolio",
-    image: project?.logo || "/og.png",
+        : lang === "ar"
+          ? "معرض أعمال الاء شاهين"
+          : "Alaa Shaheen portfolio",
+    image: project ? getProjectOgImage(project) : "/og.png",
     path: project ? `/project/${project.slug}` : "/",
   });
+
+  useEffect(() => {
+    if (project) {
+      trackEvent("Project View", { slug: project.slug, title: project.title });
+    }
+  }, [project?.slug]);
 
   const processSteps = useMemo(
     () => [
@@ -82,7 +91,6 @@ export default function ProjectPage() {
 
   return (
     <>
-      <Navbar />
       <div
         className="case__progress"
         style={{ width: `${progress}%`, "--case-color": project.color } as CSSProperties}

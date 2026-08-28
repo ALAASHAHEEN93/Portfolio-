@@ -1,5 +1,5 @@
 .case {
-  padding-top: 88px;
+  padding-top: 24px;
   --case-color: var(--accent-soft);
   animation: caseIn 0.55s var(--ease) both;
 }
@@ -44,7 +44,7 @@
   height: 70%;
   background:
     radial-gradient(ellipse at 30% 40%, color-mix(in srgb, var(--case-color) 55%, transparent) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 20%, rgba(31, 107, 92, 0.16) 0%, transparent 50%);
+    radial-gradient(ellipse at 80% 20%, rgba(193, 127, 89, 0.14) 0%, transparent 50%);
   pointer-events: none;
   filter: blur(10px);
 }
@@ -255,6 +255,12 @@
   font-size: 0.95rem;
   line-height: 1.65;
   font-weight: 500;
+}
+
+@media (max-width: 959px) {
+  .case {
+    padding-top: 88px;
+  }
 }
 
 @media (max-width: 700px) {

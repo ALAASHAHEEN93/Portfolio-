@@ -1,3 +1,4 @@
+import SectionLabel from "./SectionLabel";
 import { socialLinks } from "../data/content";
 import { useReveal } from "../hooks/useReveal";
 import { useLanguage } from "../i18n/LanguageContext";
@@ -14,7 +15,7 @@ export default function Contact() {
         <div className="contact__orb contact__orb--2" aria-hidden="true" />
 
         <div className="contact__content">
-          <span className="badge badge--accent">{t("contactBadge")}</span>
+          <SectionLabel num="05" label={t("contactBadge")} />
           <h2 className="section-title">
             {t("contactTitle")}
             <em>{t("contactTitleEm")}</em>

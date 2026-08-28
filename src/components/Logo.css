@@ -1,104 +1,34 @@
 .brand {
   display: block;
-  width: 40px;
-  height: 40px;
-  overflow: visible;
+  flex-shrink: 0;
+  line-height: 0;
 }
 
-.brand__plate {
-  fill: var(--accent-soft);
-  stroke: color-mix(in srgb, var(--accent) 28%, transparent);
-  stroke-width: 1.4;
-  transition:
-    fill 0.4s var(--ease),
-    stroke 0.4s var(--ease),
-    transform 0.45s var(--ease);
-  transform-origin: center;
+.brand__mark {
+  display: block;
+  width: 46px;
+  height: auto;
+  object-fit: contain;
 }
 
-.brand__bloom {
-  fill: none;
-  stroke: var(--accent-pink);
-  stroke-width: 2.2;
-  stroke-linecap: round;
-  opacity: 0.85;
-  transition: opacity 0.35s var(--ease), transform 0.45s var(--ease);
-  transform-origin: 36px 16px;
+.nav__logo .brand__mark {
+  width: 52px;
 }
 
-.brand__bloom--soft {
-  stroke-width: 1.5;
-  opacity: 0.45;
-}
-
-.brand__stroke {
-  fill: none;
-  stroke: var(--text);
-  stroke-width: 3.1;
-  stroke-linejoin: round;
-  transition: transform 0.45s var(--ease), stroke 0.35s var(--ease);
-  transform-origin: 24px 24px;
-}
-
-.brand__stroke--right {
-  stroke-width: 2.6;
-  opacity: 0.92;
-}
-
-.brand__bar {
-  fill: var(--accent);
-  transition: transform 0.45s var(--ease), fill 0.35s var(--ease);
-  transform-origin: center;
-}
-
-.brand__spark {
-  fill: var(--accent-pink);
-  transition: transform 0.5s var(--ease), fill 0.35s var(--ease);
-  transform-origin: 37.5px 16px;
-}
-
-a:hover .brand__plate {
-  fill: color-mix(in srgb, var(--accent) 20%, white);
-  stroke: color-mix(in srgb, var(--accent) 55%, transparent);
-  transform: rotate(-4deg) scale(1.05);
-}
-
-a:hover .brand__bloom {
-  opacity: 1;
-  transform: rotate(12deg) scale(1.08);
-}
-
-a:hover .brand__stroke--left {
-  transform: translate(-0.8px, 0.4px) rotate(-2deg);
-}
-
-a:hover .brand__stroke--right {
-  transform: translate(0.8px, 0.4px) rotate(2deg);
-}
-
-a:hover .brand__bar {
-  fill: var(--accent-pink);
-  transform: scaleX(1.12);
-}
-
-a:hover .brand__spark {
-  fill: var(--accent);
-  transform: rotate(25deg) scale(1.25);
-}
-
-.nav__logo .brand {
-  width: 38px;
-  height: 38px;
-}
-
-.footer__brand .brand {
+.nav__bar-brand .brand__mark {
   width: 34px;
-  height: 34px;
 }
 
-@media (max-width: 768px) {
-  .nav__logo .brand {
-    width: 34px;
-    height: 34px;
+.footer__brand .brand__mark {
+  width: 40px;
+}
+
+.intro__logo .brand__mark {
+  width: 72px;
+}
+
+@media (max-width: 639px) {
+  .nav__bar-brand .brand__mark {
+    width: 30px;
   }
 }

@@ -1,9 +1,8 @@
-import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
-import Marquee from "../components/Marquee";
 import Work from "../components/Work";
 import About from "../components/About";
 import Experience from "../components/Experience";
+import Faq from "../components/Faq";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import { useLanguage } from "../i18n/LanguageContext";
@@ -17,24 +16,27 @@ export default function Home() {
     title:
       lang === "de"
         ? `${personal.name} | UI/UX Designerin`
-        : `${personal.name} | UI/UX Designer`,
+        : lang === "ar"
+          ? `${personal.name} | مصممة واجهات وتجربة مستخدم`
+          : `${personal.name} | UI/UX Designer`,
     description:
       lang === "de"
         ? "Portfolio von Alaa Shaheen. UI/UX Design und Front-end in Köln. Mobile Apps, Branding und Web."
-        : "Alaa Shaheen. UI/UX Designer in Cologne. Portfolio of mobile apps, branding, and front-end work.",
+        : lang === "ar"
+          ? "معرض أعمال الاء شاهين. تصميم واجهات وتطويرها في كولونيا. تطبيقات وعلامات وويب."
+          : "Alaa Shaheen. UI/UX Designer in Cologne. Portfolio of mobile apps, branding, and front-end work.",
     image: "/og.png",
     path: "/",
   });
 
   return (
     <>
-      <Navbar />
       <main>
         <Hero />
-        <Marquee />
         <Work />
         <About />
         <Experience />
+        <Faq />
         <Contact />
       </main>
       <Footer />

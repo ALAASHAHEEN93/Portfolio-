@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/brand-mark.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
       content="Alaa Shaheen — UI/UX Designer in Cologne. Portfolio of mobile apps, branding, and front-end work."
     />
-    <meta name="theme-color" content="#f3f2ee" />
+    <meta name="theme-color" content="#faf7f3" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Alaa Shaheen | UI/UX Designer" />
     <meta
@@ -32,6 +33,18 @@
     <title>Alaa Shaheen | UI/UX Designer</title>
   </head>
   <body>
+    <script>
+      (function () {
+        var stored = localStorage.getItem("portfolio-theme");
+        var theme =
+          stored === "light" || stored === "dark"
+            ? stored
+            : window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

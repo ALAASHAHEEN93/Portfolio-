@@ -42,8 +42,9 @@ export default function Footer() {
         </div>
 
         <p className="footer__tag">
-          &copy; {new Date().getFullYear()} Alaa Shaheen
+          &copy; {new Date().getFullYear()} {personal.name}
         </p>
+        <p className="footer__a11y">{t("footerA11y")}</p>
       </div>
     </footer>
   );

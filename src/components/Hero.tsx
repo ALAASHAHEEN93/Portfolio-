@@ -1,178 +1,87 @@
-import { useEffect, useRef, type CSSProperties } from "react";
-import { Link } from "react-router-dom";
 import { useLanguage } from "../i18n/LanguageContext";
 import "./Hero.css";
 
-function BrandChars({ text, delay = 0 }: { text: string; delay?: number }) {
-  return (
-    <>
-      {text.split("").map((char, i) => (
-        <span
-          key={`${char}-${i}`}
-          className="hero__char"
-          style={{ animationDelay: `${delay + i * 0.035}s` }}
-        >
-          {char}
-        </span>
-      ))}
-    </>
-  );
-}
-
 export default function Hero() {
   const { t, personal, projectList } = useLanguage();
-  const [firstName, lastName] = personal.name.split(" ");
-  const heroRef = useRef<HTMLElement>(null);
-  const peek = projectList.filter((p) => p.logo).slice(0, 3);
 
-  useEffect(() => {
-    const el = heroRef.current;
-    if (!el) return;
-
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const coarse = window.matchMedia("(pointer: coarse)").matches;
-    if (reduceMotion || coarse) return;
-
-    let raf = 0;
-    let targetX = 0;
-    let targetY = 0;
-    let curX = 0;
-    let curY = 0;
-
-    const onMove = (e: PointerEvent) => {
-      const rect = el.getBoundingClientRect();
-      targetX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
-      targetY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
-    };
-
-    const onLeave = () => {
-      targetX = 0;
-      targetY = 0;
-    };
-
-    const tick = () => {
-      curX += (targetX - curX) * 0.07;
-      curY += (targetY - curY) * 0.07;
-      el.style.setProperty("--mx", curX.toFixed(3));
-      el.style.setProperty("--my", curY.toFixed(3));
-      raf = requestAnimationFrame(tick);
-    };
-
-    el.addEventListener("pointermove", onMove);
-    el.addEventListener("pointerleave", onLeave);
-    raf = requestAnimationFrame(tick);
-
-    return () => {
-      el.removeEventListener("pointermove", onMove);
-      el.removeEventListener("pointerleave", onLeave);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
+  const panels = [
+    {
+      label: t("heroPanelPractice"),
+      title: t("heroPanelPracticeTitle"),
+      detail: t("heroPanelPracticeDetail"),
+    },
+    {
+      label: t("heroPanelOpenTo"),
+      title: t("heroPanelOpenToTitle"),
+      detail: t("heroPanelOpenToDetail"),
+    },
+    {
+      label: t("heroPanelCurrently"),
+      title: `${projectList.length} ${t("heroCaseStudies")}`,
+      detail: t("heroPanelCurrentlyDetail"),
+    },
+  ];
 
   return (
-    <section className="hero" ref={heroRef}>
-      <div className="hero__atmosphere" aria-hidden="true">
-        <div className="hero__wash hero__wash--a" />
-        <div className="hero__wash hero__wash--b" />
-        <div className="hero__wash hero__wash--c" />
-        <div className="hero__grid" />
-        <div className="hero__arc-layer">
-          <div className="hero__arc" />
-        </div>
-      </div>
+    <section id="top" className="hero section">
+      <div className="hero__inner section__inner">
+        <div className="hero__layout">
+          <div className="hero__content">
+            <h1 className="hero__headline">
+              {t("heroTitleLead")} <em>{t("heroTitleEm")}</em> {t("heroTitleRest")}
+            </h1>
 
-      <div className="hero__stage">
-        <div className="hero__content">
-          <div className="hero__meta">
-            <a
-              href={`mailto:${personal.email}?subject=Hello%20Alaa`}
-              className="badge badge--live"
-            >
-              <span className="badge__dot" />
-              {t("available")}
-            </a>
-            <span className="hero__meta-rule" />
-            <span className="hero__meta-text">{personal.location}</span>
-          </div>
+            <p className="hero__intro">{t("heroIntro")}</p>
 
-          <h1 className="hero__brand">
-            <span className="hero__brand-line">
-              <span className="hero__brand-word">
-                <BrandChars text={firstName} delay={0.06} />
-              </span>
-            </span>
-            <span className="hero__brand-line hero__brand-line--accent">
-              <span className="hero__brand-word">
-                <BrandChars text={lastName} delay={0.22} />
-              </span>
-            </span>
-          </h1>
-
-          <div className="hero__copy">
-            <p className="hero__title">
-              <span className="hero__line">{t("heroLine1")}</span>
-              <span className="hero__line hero__line--accent">{t("heroLine2")}</span>
-            </p>
-            <p className="hero__sub">{t("heroSub")}</p>
-          </div>
-
-          <div className="hero__actions">
-            <a href="#work" className="btn btn--primary">
-              {t("viewWork")}
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </a>
-            <a
-              href={personal.socials.behance}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn"
-            >
-              Behance
-            </a>
-          </div>
-
-          {peek.length > 0 && (
-            <div className="hero__peek">
-              <span className="hero__peek-label">{t("featured")}</span>
-              <div className="hero__peek-row">
-                {peek.map((project) => (
-                  <Link
-                    key={project.slug}
-                    to={`/project/${project.slug}`}
-                    className="hero__peek-item"
-                    aria-label={project.title}
-                    style={{ "--peek-color": project.color } as CSSProperties}
-                  >
-                    <img src={project.logo} alt="" />
-                  </Link>
-                ))}
-              </div>
+            <div className="hero__actions">
+              <a href="#work" className="btn btn--primary">
+                {t("heroViewProjects")}
+              </a>
+              <a href={personal.resumeUrl} className="btn btn--outline" download>
+                {t("downloadCv")}
+              </a>
+              <a
+                href={personal.socials.behance}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn--outline"
+              >
+                {t("viewBehance")}
+              </a>
+              <a href="#contact" className="btn btn--outline">
+                {t("heroContactMe")}
+              </a>
             </div>
-          )}
+          </div>
+
+          <aside className="hero__aside">
+            <div className="hero__card">
+              <div className="hero__photo">
+                <img src={personal.photo} alt={personal.name} />
+              </div>
+              <p className="hero__card-name">{personal.name}</p>
+              <p className="hero__card-role">{personal.title}</p>
+              <p className="hero__card-location">{personal.location}</p>
+              <span className="hero__card-badge badge badge--live">
+                <span className="badge__dot" />
+                {t("available")}
+              </span>
+            </div>
+          </aside>
         </div>
 
-        <aside className="hero__visual">
-          <div className="hero__visual-shift">
-            <div className="hero__visual-frame">
-              <div className="hero__visual-plane">
-                <img src="/profile-original.png" alt={personal.name} />
-                <span className="hero__visual-tint" aria-hidden="true" />
-              </div>
-              <div className="hero__visual-ring" aria-hidden="true" />
-            </div>
-            <p className="hero__visual-caption">
-              <span>{t("photoCaption")}</span>
-            </p>
-          </div>
-        </aside>
+        <div className="hero__panels">
+          {panels.map((panel) => (
+            <article key={panel.label} className="hero__panel">
+              <span className="hero__panel-label">{panel.label}</span>
+              <p className="hero__panel-title">
+                <strong>{panel.title}</strong>
+              </p>
+              <p className="hero__panel-detail">{panel.detail}</p>
+            </article>
+          ))}
+        </div>
       </div>
-
-      <a href="#work" className="hero__scroll" aria-label={t("viewWork")}>
-        <span className="hero__scroll-label">Scroll</span>
-        <span className="hero__scroll-line" aria-hidden="true" />
-      </a>
     </section>
   );
 }

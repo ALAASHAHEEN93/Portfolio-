@@ -1,0 +1,24 @@
+.section-num {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.section-num__index {
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.section-num__sep {
+  opacity: 0.45;
+}
+
+.section-num__label {
+  color: var(--muted);
+}

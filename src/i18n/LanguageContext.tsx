@@ -10,6 +10,7 @@ import {
 import {
   education,
   experience,
+  focusAreas,
   languages,
   personalInfo,
   projects,
@@ -18,6 +19,16 @@ import {
   designPrinciplesDe,
   type Project,
 } from "../data/content";
+import {
+  designPrinciplesAr,
+  educationAr,
+  experienceAr,
+  focusAreasAr,
+  languagesAr,
+  personalInfoAr,
+  projectsAr,
+  skillsAr,
+} from "./content.ar";
 import {
   educationDe,
   experienceDe,
@@ -38,6 +49,7 @@ type LanguageContextValue = {
   educationItems: typeof education;
   languageItems: typeof languages;
   skillItems: string[];
+  focusAreaItems: string[];
   principles: typeof designPrinciples;
   projectList: Project[];
   getProject: (slug: string) => Project | undefined;
@@ -49,15 +61,53 @@ function readInitialLang(): Lang {
   if (typeof window === "undefined") return "en";
   const stored = localStorage.getItem(LANG_STORAGE_KEY);
   if (isLang(stored)) return stored;
-  return navigator.language.toLowerCase().startsWith("de") ? "de" : "en";
+  const nav = navigator.language.toLowerCase();
+  if (nav.startsWith("ar")) return "ar";
+  if (nav.startsWith("de")) return "de";
+  return "en";
 }
 
 function localizeProjects(lang: Lang): Project[] {
   if (lang === "en") return projects;
+  const copyMap = lang === "de" ? projectsDe : projectsAr;
   return projects.map((project) => {
-    const copy = projectsDe[project.slug];
+    const copy = copyMap[project.slug];
     return copy ? { ...project, ...copy } : project;
   });
+}
+
+function getLocalizedBundle(lang: Lang) {
+  if (lang === "de") {
+    return {
+      personal: { ...personalInfo, ...personalInfoDe },
+      experienceItems: experienceDe,
+      educationItems: educationDe,
+      languageItems: languagesDe,
+      skillItems: skillsDe,
+      focusAreaItems: focusAreas,
+      principles: designPrinciplesDe,
+    };
+  }
+  if (lang === "ar") {
+    return {
+      personal: { ...personalInfo, ...personalInfoAr },
+      experienceItems: experienceAr,
+      educationItems: educationAr,
+      languageItems: languagesAr,
+      skillItems: skillsAr,
+      focusAreaItems: focusAreasAr,
+      principles: designPrinciplesAr,
+    };
+  }
+  return {
+    personal: personalInfo,
+    experienceItems: experience,
+    educationItems: education,
+    languageItems: languages,
+    skillItems: skills,
+    focusAreaItems: focusAreas,
+    principles: designPrinciples,
+  };
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
@@ -70,23 +120,17 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
   }, [lang]);
 
   const value = useMemo<LanguageContextValue>(() => {
     const projectList = localizeProjects(lang);
+    const bundle = getLocalizedBundle(lang);
     return {
       lang,
       setLang,
       t: (key) => ui[lang][key],
-      personal:
-        lang === "de"
-          ? { ...personalInfo, ...personalInfoDe }
-          : personalInfo,
-      experienceItems: lang === "de" ? experienceDe : experience,
-      educationItems: lang === "de" ? educationDe : education,
-      languageItems: lang === "de" ? languagesDe : languages,
-      skillItems: lang === "de" ? skillsDe : skills,
-      principles: lang === "de" ? designPrinciplesDe : designPrinciples,
+      ...bundle,
       projectList,
       getProject: (slug) => projectList.find((p) => p.slug === slug),
     };
