@@ -101,8 +101,8 @@ export const educationAr: EducationItem[] = [
   },
   {
     period: "2011 - 2016",
-    title: "مهندسة أنظمة حاسوب",
-    institution: "جامعة الأزهر",
+    title: "هندسة البرمجيات",
+    institution: "جامعة الأزهر، غزة، فلسطين",
   },
 ];
 

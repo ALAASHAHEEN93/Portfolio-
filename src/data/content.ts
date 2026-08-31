@@ -74,8 +74,8 @@ export const education: EducationItem[] = [
   },
   {
     period: "2011 - 2016",
-    title: "Computer System Engineer",
-    institution: "Al-Azhar University",
+    title: "Software Engineering",
+    institution: "Al-Azhar University, Gaza, Palestine",
   },
 ];
 
@@ -85,23 +85,31 @@ export type Certificate = {
   issuer: { en: string; de: string; ar: string };
   year: string;
   file: string;
+  link?: string;
+  linkLabel?: { en: string; de: string; ar: string };
 };
 
 export const certificates: Certificate[] = [
   {
-    id: "beam-web-design",
+    id: "google-ai-essentials",
     title: {
-      en: "Web Design Training",
-      de: "Webdesign-Weiterbildung",
-      ar: "تدريب تصميم الويب",
+      en: "Google AI Essentials",
+      de: "Google AI Essentials",
+      ar: "Google AI Essentials",
     },
     issuer: {
-      en: "Beam Institute of Technology",
-      de: "Beam Institute of Technology",
-      ar: "Beam Institute of Technology",
+      en: "Google · Coursera",
+      de: "Google · Coursera",
+      ar: "Google · Coursera",
     },
-    year: "2024",
-    file: "/certificates/web-design-certificate.pdf",
+    year: "2025",
+    file: "/certificates/google-ai-essentials.png",
+    link: "https://coursera.org/verify/UACAADBH6P6Q",
+    linkLabel: {
+      en: "Verify on Coursera",
+      de: "Auf Coursera verifizieren",
+      ar: "التحقق على Coursera",
+    },
   },
   {
     id: "beam-certificate",
@@ -117,6 +125,21 @@ export const certificates: Certificate[] = [
     },
     year: "2025",
     file: "/certificates/beam-zertifikat.pdf",
+  },
+  {
+    id: "al-azhar-software-engineering",
+    title: {
+      en: "Software Engineering",
+      de: "Software Engineering",
+      ar: "هندسة البرمجيات",
+    },
+    issuer: {
+      en: "Al-Azhar University, Gaza, Palestine",
+      de: "Al-Azhar University, Gaza, Palästina",
+      ar: "جامعة الأزهر، غزة، فلسطين",
+    },
+    year: "2016",
+    file: "/certificates/al-azhar-software-engineering.pdf",
   },
 ];
 

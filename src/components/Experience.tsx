@@ -96,23 +96,44 @@ export default function Experience() {
                   <span className="cv__card-period">{cert.year}</span>
                   <h4 className="cv__card-title">{certLabel(cert.title, lang)}</h4>
                   <p className="cv__card-meta">{certLabel(cert.issuer, lang)}</p>
-                  <a
-                    href={cert.file}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="cv__cert-link"
-                  >
-                    {t("viewCertificate")}
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                      <path
-                        d="M4 12L12 4M12 4H6M12 4v6"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </a>
+                  <div className="cv__cert-links">
+                    <a
+                      href={cert.file}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cv__cert-link"
+                    >
+                      {t("viewCertificate")}
+                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path
+                          d="M4 12L12 4M12 4H6M12 4v6"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </a>
+                    {cert.link && (
+                      <a
+                        href={cert.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="cv__cert-link cv__cert-link--secondary"
+                      >
+                        {cert.linkLabel ? certLabel(cert.linkLabel, lang) : t("viewOnLinkedIn")}
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                          <path
+                            d="M4 12L12 4M12 4H6M12 4v6"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </a>
+                    )}
+                  </div>
                 </article>
               ))}
             </div>

@@ -13,6 +13,15 @@
   overflow: hidden;
 }
 
+[data-theme="dark"] .contact__card {
+  background:
+    radial-gradient(circle at 88% 8%, rgba(212, 149, 111, 0.22), transparent 44%),
+    radial-gradient(circle at 12% 92%, rgba(224, 153, 173, 0.08), transparent 38%),
+    linear-gradient(145deg, #3a2f28 0%, #241e1a 55%, #1a1613 100%);
+  border-color: color-mix(in srgb, var(--accent) 28%, transparent);
+  box-shadow: var(--shadow-md);
+}
+
 .contact__orb {
   position: absolute;
   border-radius: 50%;
@@ -37,6 +46,16 @@
   left: 18%;
 }
 
+[data-theme="dark"] .contact__orb--1 {
+  background: rgba(212, 149, 111, 0.28);
+  opacity: 0.7;
+}
+
+[data-theme="dark"] .contact__orb--2 {
+  background: rgba(224, 153, 173, 0.12);
+  opacity: 0.65;
+}
+
 .contact__content,
 .contact__aside {
   position: relative;
@@ -51,6 +70,10 @@
   max-width: 22rem;
 }
 
+[data-theme="dark"] .contact__content .section-sub {
+  color: color-mix(in srgb, var(--text) 72%, var(--muted));
+}
+
 .contact__aside {
   display: flex;
   flex-direction: column;
@@ -63,12 +86,20 @@
   flex-direction: column;
   gap: 6px;
   padding: 22px 24px;
-  background: rgba(255, 252, 248, 0.88);
+  background: color-mix(in srgb, var(--surface) 88%, #fffcf8);
   backdrop-filter: blur(10px);
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.65);
+  border: 1px solid color-mix(in srgb, var(--surface) 40%, var(--border));
   transition: all 0.35s var(--ease);
   position: relative;
+}
+
+[data-theme="dark"] .contact__email,
+[data-theme="dark"] .contact__resume {
+  background: color-mix(in srgb, var(--surface) 92%, var(--accent) 8%);
+  border-color: color-mix(in srgb, var(--accent) 22%, var(--border));
+  backdrop-filter: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .contact__email:hover,
@@ -76,6 +107,13 @@
   transform: var(--lift);
   box-shadow: var(--shadow-sm);
   background: var(--surface);
+}
+
+[data-theme="dark"] .contact__email:hover,
+[data-theme="dark"] .contact__resume:hover {
+  background: color-mix(in srgb, var(--surface-2) 88%, var(--accent) 12%);
+  border-color: color-mix(in srgb, var(--accent) 38%, transparent);
+  box-shadow: var(--shadow-sm);
 }
 
 .contact__email-label {
@@ -86,11 +124,16 @@
   color: var(--muted);
 }
 
+[data-theme="dark"] .contact__email-label {
+  color: var(--accent);
+}
+
 .contact__email-value {
   font-size: 1rem;
   font-weight: 600;
   padding-right: 40px;
   word-break: break-word;
+  color: var(--text);
 }
 
 .contact__email-arrow {
@@ -101,11 +144,16 @@
   height: 34px;
   border-radius: 50%;
   background: var(--text);
-  color: #fffcf8;
+  color: var(--on-accent, #fffcf8);
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.3s var(--ease), background 0.3s var(--ease);
+}
+
+[data-theme="dark"] .contact__email-arrow {
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 .contact__email:hover .contact__email-arrow,
@@ -127,13 +175,25 @@
   font-size: 0.84rem;
   font-weight: 600;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  background: rgba(255, 252, 248, 0.75);
+  border: 1px solid color-mix(in srgb, var(--surface) 40%, var(--border));
+  background: color-mix(in srgb, var(--surface) 75%, #fffcf8);
   transition: all 0.3s var(--ease);
+}
+
+[data-theme="dark"] .contact__social {
+  background: color-mix(in srgb, var(--surface-2) 85%, transparent);
+  border-color: var(--border);
+  color: var(--text);
 }
 
 .contact__social:hover {
   background: var(--surface);
+  color: var(--accent);
+}
+
+[data-theme="dark"] .contact__social:hover {
+  background: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
   color: var(--accent);
 }
 

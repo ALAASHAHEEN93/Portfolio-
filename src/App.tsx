@@ -18,9 +18,13 @@ function shouldSkipIntro() {
   return sessionStorage.getItem(INTRO_KEY) === "1";
 }
 
+function AnalyticsListener() {
+  usePageAnalytics();
+  return null;
+}
+
 function AppShell() {
   const [ready, setReady] = useState(() => shouldSkipIntro());
-  usePageAnalytics();
 
   const handleIntroDone = () => {
     sessionStorage.setItem(INTRO_KEY, "1");
@@ -31,6 +35,7 @@ function AppShell() {
     <>
       {!ready && <IntroLoader onDone={handleIntroDone} />}
       <BrowserRouter>
+        <AnalyticsListener />
         <Navbar />
         <div className={`app-shell${ready ? " is-ready" : ""}`}>
           <ScrollToHash />

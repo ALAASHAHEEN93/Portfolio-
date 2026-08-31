@@ -73,8 +73,8 @@ export const educationDe: EducationItem[] = [
   },
   {
     period: "2011 - 2016",
-    title: "Computer System Engineer",
-    institution: "Al-Azhar University",
+    title: "Software Engineering",
+    institution: "Al-Azhar University, Gaza, Palästina",
   },
 ];
 

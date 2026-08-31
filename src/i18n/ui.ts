@@ -98,6 +98,7 @@ type UiDict = {
   themeLight: string;
   certificates: string;
   viewCertificate: string;
+  viewOnLinkedIn: string;
   principles: string;
   faqBadge: string;
   faqTitle: string;
@@ -217,6 +218,7 @@ export const ui: Record<Lang, UiDict> = {
     themeLight: "Switch to light mode",
     certificates: "Certificates",
     viewCertificate: "View PDF",
+    viewOnLinkedIn: "View on LinkedIn",
     principles: "Principles",
     faqBadge: "FAQ",
     faqTitle: "Common questions",
@@ -338,6 +340,7 @@ export const ui: Record<Lang, UiDict> = {
     themeLight: "Hellmodus aktivieren",
     certificates: "Zertifikate",
     viewCertificate: "PDF ansehen",
+    viewOnLinkedIn: "Auf LinkedIn ansehen",
     principles: "Prinzipien",
     faqBadge: "FAQ",
     faqTitle: "Häufige Fragen",
@@ -459,6 +462,7 @@ export const ui: Record<Lang, UiDict> = {
     themeLight: "تفعيل الوضع الفاتح",
     certificates: "الشهادات",
     viewCertificate: "عرض PDF",
+    viewOnLinkedIn: "عرض على LinkedIn",
     principles: "المبادئ",
     faqBadge: "أسئلة",
     faqTitle: "أسئلة شائعة",

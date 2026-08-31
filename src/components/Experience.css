@@ -204,15 +204,29 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-top: 12px;
   font-size: 0.84rem;
   font-weight: 600;
   color: var(--accent);
   transition: color 0.25s var(--ease);
 }
 
+.cv__cert-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  margin-top: 12px;
+}
+
+.cv__cert-link--secondary {
+  color: var(--muted);
+}
+
 .cv__cert-link:hover {
   color: var(--accent-hover);
+}
+
+.cv__cert-link--secondary:hover {
+  color: var(--accent);
 }
 
 @media (max-width: 900px) {
